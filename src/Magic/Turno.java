@@ -30,7 +30,7 @@ public class Turno {
         }
         g.estraiCarta();
         while(g.mano.size()>7){
-            System.out.println(g.getNome() + " CIAO hai troppe carte in mano, quali vuoi scartare (indicare con un intero compreso l'indice della carta da rimuovere)?");
+            System.out.println(g.getNome() + " hai troppe carte in mano, quali vuoi scartare (indicare con un intero compreso l'indice della carta da rimuovere)?");
             g.stampaMano();
             System.out.println("");
             int input=0;
