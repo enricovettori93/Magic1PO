@@ -49,7 +49,7 @@ public class CampoGioco {
                 System.out.println ("Si è verificato un errore: " + e);
             }
         }while(nome1.equals(""));
-        g1 = new Giocatore(nome1);
+        g1 = new Giocatore(nome1,this);
         System.out.println("Giocatore 2, inserisci il tuo nome: ");
         do{
             try {
@@ -58,7 +58,7 @@ public class CampoGioco {
                 System.out.println ("Si è verificato un errore: " + e);
             }
         }while(nome2.equals(""));
-        g2 = new Giocatore(nome2);
+        g2 = new Giocatore(nome2,this);
         //Visualizzo i mazzi
         System.out.println("\nMazzo di " + g1.getNome());
         g1.stampaMazzo();
