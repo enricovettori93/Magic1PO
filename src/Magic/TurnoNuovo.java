@@ -36,11 +36,11 @@ public class TurnoNuovo {
         Si va a controllare nel campo da gioco gli eventuali effetti attivi che modificano
         le fasi e si crea il vettore di fasi
         */
-        fasi.add(new DrawPhase(cg));
-        fasi.add(new UntapPhase(cg));
-        fasi.add(new CombatPhase(cg));
-        fasi.add(new MainPhase(cg));
-        fasi.add(new EndPhase(cg));
+        fasi.add(new DrawPhase(cg,g));
+        fasi.add(new UntapPhase(cg,g));
+        fasi.add(new CombatPhase(cg,g));
+        fasi.add(new MainPhase(cg,g));
+        fasi.add(new EndPhase(cg,g));
         for(i=0;i<fasi.size();i++){
             fasi.get(i).initPhase();
         }

@@ -11,8 +11,10 @@ package Magic;
  */
 public class EndPhase implements Phase {
     private CampoGioco cg;
-    public EndPhase(CampoGioco cg){
+    private Giocatore g;
+    public EndPhase(CampoGioco cg, Giocatore g){
         this.cg=cg;
+        this.g=g;
     }
     @Override
     public void initPhase() {

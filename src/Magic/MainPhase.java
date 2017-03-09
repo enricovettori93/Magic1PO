@@ -11,8 +11,10 @@ package Magic;
  */
 public class MainPhase implements Phase {
     private CampoGioco cg;
-    public MainPhase(CampoGioco cg){
+    private Giocatore g;
+    public MainPhase(CampoGioco cg, Giocatore g){
         this.cg=cg;
+        this.g=g;
     }
     @Override
     public void initPhase() {

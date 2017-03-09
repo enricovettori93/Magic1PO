@@ -11,8 +11,10 @@ package Magic;
  */
 public class DrawPhase implements Phase {
     private CampoGioco cg;
-    public DrawPhase(CampoGioco cg){
+    private Giocatore g;
+    public DrawPhase(CampoGioco cg, Giocatore g){
         this.cg=cg;
+        this.g=g;
     }
     @Override
     public void initPhase() {
