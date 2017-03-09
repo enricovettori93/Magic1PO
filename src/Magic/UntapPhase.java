@@ -19,6 +19,7 @@ public class UntapPhase implements Phase {
     @Override
     public void initPhase() {
         System.out.println("Sono nella untap phase");
+        //DEVO ACCEDERE ALLE LISTE DI MOSTRI IN CAMPO PER POTER SCEGLIERE QUALI TAPPARE/NON TAPPARE
     }
     
 }

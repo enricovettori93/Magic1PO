@@ -18,7 +18,7 @@ public class CombatPhase implements Phase {
     }
     @Override
     public void initPhase() {
-        System.out.println("Sono nella combat phase");
+        System.out.println("Sono nella combat phase (non gestita in questo assignment)");
     }
     
 }

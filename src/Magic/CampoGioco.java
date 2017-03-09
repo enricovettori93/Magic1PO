@@ -66,7 +66,7 @@ public class CampoGioco {
                 System.out.println ("Si è verificato un errore: " + e);
             }
         }while(nome1.equals(""));
-        g1 = new Giocatore(nome1,this,mostri_g1,magie_g1);
+        g1 = new Giocatore(nome1,this);
         System.out.println("Giocatore 2, inserisci il tuo nome: ");
         do{
             try {
@@ -75,7 +75,7 @@ public class CampoGioco {
                 System.out.println ("Si è verificato un errore: " + e);
             }
         }while(nome2.equals(""));
-        g2 = new Giocatore(nome2,this,mostri_g1,magie_g2);
+        g2 = new Giocatore(nome2,this);
         //Visualizzo i mazzi
         System.out.println("\nMazzo di " + g1.getNome());
         g1.stampaMazzo();
@@ -87,26 +87,46 @@ public class CampoGioco {
         System.out.println("\nCarte iniziali di " + g2.getNome());
         g2.stampaMano();
     }
+    //METODI DI DEBUG PER STAMPARE MOSTRI E MAGIE IN CAMPO
     public void stampaMagie(){
         int i;
-        System.out.println("Magie giocatore " + g1.getNome());
+        System.out.println("\nMagie giocatore " + g1.getNome());
         for(i=0;i<magie_g1.size();i++){
-            System.out.println(""+magie_g1.get(i));
+            System.out.print(" "+magie_g1.get(i));
         }
-        System.out.println("Magie giocatore " + g2.getNome());
+        System.out.println("\nMagie giocatore " + g2.getNome());
         for(i=0;i<magie_g1.size();i++){
-            System.out.println(""+magie_g2.get(i));
+            System.out.print(" "+magie_g2.get(i));
         }
+        System.out.println("\n");
     }
     public void stampaMostri(){
         int i;
-        System.out.println("Mostri giocatore " + g1.getNome());
-        for(i=0;i<magie_g1.size();i++){
-            System.out.println(""+mostri_g1.get(i));
+        System.out.println("\nMostri giocatore " + g1.getNome());
+        for(i=0;i<mostri_g1.size();i++){
+            System.out.print(" "+mostri_g1.get(i));
         }
-        System.out.println("Mostri giocatore " + g2.getNome());
-        for(i=0;i<magie_g1.size();i++){
-            System.out.println(""+mostri_g2.get(i));
+        System.out.println("\nMostri giocatore " + g2.getNome());
+        for(i=0;i<mostri_g2.size();i++){
+            System.out.print(" "+mostri_g2.get(i));
+        }
+        System.out.println("\n");
+    }
+    //METODI PER AGGIUNGERE MOSTRI E MAGIE ALLE LISTE IN CAMPO IN BASE AL GIOCATORE CHE HA GIOCATO LA CARTA
+    public void addMostro(Integer i,Giocatore g){
+        if(g.hashCode()==g1.hashCode()){
+            mostri_g1.add(i);
+        }
+        else{
+            mostri_g2.add(i);
+        }
+    }
+    public void addMagia(Integer i,Giocatore g){
+        if(g.hashCode()==g1.hashCode()){
+            magie_g1.add(i);
+        }
+        else{
+            magie_g2.add(i);
         }
     }
 }

@@ -18,23 +18,19 @@ public class Giocatore {
     //Variabili dentro la classe giocatore
     private String nome;
     private int lifePoints;
-    List<Integer> mostri;
-    List<Integer> magie;
-    Stack<Integer> mazzo;
-    List<Integer> mano;
-    TurnoNuovo t;
-    Boolean ingioco;
-    CampoGioco cg;
+    private Stack<Integer> mazzo;
+    protected List<Integer> mano;
+    private TurnoNuovo t;
+    private Boolean ingioco;
+    private CampoGioco cg;
     //Costruttore
-    public Giocatore(String nome, CampoGioco cg, List<Integer> mostri, List<Integer> magie){
+    public Giocatore(String nome, CampoGioco cg){
         this.nome=nome;
         lifePoints=20;
         this.cg=cg;
         mazzo = new Stack<>();
         mano = new ArrayList<>();
         ingioco=true;
-        this.mostri=mostri;
-        this.magie=magie;
         creaMazzo();
         creaMano();
     }
@@ -94,8 +90,9 @@ public class Giocatore {
         }
     }
     public void giocaCarta(int indice){
-        //SI DEVE CONTROLLARE SE è MOSTRO O MAGIA
-        this.mostri.add(indice);
+        //SI DEVE CONTROLLARE SE è MOSTRO O MAGIA CON IF THEN ELSE, ORA ADDO ALLA LISTA MOSTRI DI DEFAULT
+        cg.addMostro(mano.get(indice-1), this);
+        mano.remove(indice-1);
         //CODICE DI DEBUG
         cg.stampaMagie();
         cg.stampaMostri();

@@ -11,12 +11,14 @@ package Magic;
  */
 //CREATURA
 public class Creature extends Card {
+    private boolean untapped;
     public Creature(String nome, String descrizione){
         this.nome=nome;
         this.descrizione=descrizione;
+        untapped=true;
     }
     @Override
     public void eseguiEffetto(){
-        
+        System.out.println("Eseguo l'effetto della creatura");
     }
 }
