@@ -17,6 +17,6 @@ public class Instant extends Card{
     }
     @Override
     public void eseguiEffetto(){
-        
+        System.out.println("");
     }
 }
