@@ -20,8 +20,9 @@ public class Giocatore {
     private int lifePoints;
     Stack<Integer> mazzo = new Stack<>();
     List<Integer> mano = new ArrayList<>();
-    Turno t;
+    TurnoNuovo t;
     Boolean ingioco;
+    CampoGioco cg;
     //Costruttori
     public Giocatore(){
         this.nome="";
@@ -29,15 +30,14 @@ public class Giocatore {
         creaMazzo();
         creaMano();
         ingioco=true;
-        t = new Turno(this);
     }
-    public Giocatore(String nome){
+    public Giocatore(String nome, CampoGioco cg){
         this.nome=nome;
         lifePoints=20;
+        this.cg=cg;
         creaMazzo();
         creaMano();
         ingioco=true;
-        t = new Turno(this);
     }
     //Metodi getter e setter
     public String getNome(){
@@ -96,6 +96,6 @@ public class Giocatore {
     }
     //Metodo per iniziare ogni turno
     public void initTurno(){
-        t.drawPhase();
+        t = new TurnoNuovo(cg,this);
     }
 }
