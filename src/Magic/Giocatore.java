@@ -18,26 +18,25 @@ public class Giocatore {
     //Variabili dentro la classe giocatore
     private String nome;
     private int lifePoints;
-    Stack<Integer> mazzo = new Stack<>();
-    List<Integer> mano = new ArrayList<>();
+    List<Integer> mostri;
+    List<Integer> magie;
+    Stack<Integer> mazzo;
+    List<Integer> mano;
     TurnoNuovo t;
     Boolean ingioco;
     CampoGioco cg;
-    //Costruttori
-    public Giocatore(){
-        this.nome="";
-        lifePoints=20;
-        creaMazzo();
-        creaMano();
-        ingioco=true;
-    }
-    public Giocatore(String nome, CampoGioco cg){
+    //Costruttore
+    public Giocatore(String nome, CampoGioco cg, List<Integer> mostri, List<Integer> magie){
         this.nome=nome;
         lifePoints=20;
         this.cg=cg;
+        mazzo = new Stack<>();
+        mano = new ArrayList<>();
+        ingioco=true;
+        this.mostri=mostri;
+        this.magie=magie;
         creaMazzo();
         creaMano();
-        ingioco=true;
     }
     //Metodi getter e setter
     public String getNome(){
@@ -93,6 +92,13 @@ public class Giocatore {
         for(int i = 0; i < mano.size(); i++){
             System.out.print(mano.get(i) + " ");
         }
+    }
+    public void giocaCarta(int indice){
+        //SI DEVE CONTROLLARE SE è MOSTRO O MAGIA
+        this.mostri.add(indice);
+        //CODICE DI DEBUG
+        cg.stampaMagie();
+        cg.stampaMostri();
     }
     //Metodo per iniziare ogni turno
     public void initTurno(){

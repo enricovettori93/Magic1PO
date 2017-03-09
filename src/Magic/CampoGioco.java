@@ -8,18 +8,35 @@ package Magic;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 /**
  *
  * @author Enrico
  */
 public class CampoGioco {
+    //DICHIARAZIONE VARIABILI
     private String nome1;
     private String nome2;
     private Giocatore g1;
     private Giocatore g2;
+    //IDEA A CASO
+    protected List<Integer> mostri_g1;
+    protected List<Integer> mostri_g2;
+    protected List<Integer> magie_g1;
+    protected List<Integer> magie_g2;
+    protected Stack<Integer> effetti;
+    //FINE IDEA A CASO
+    //FINE VARIABILI
     public CampoGioco(){
         //Inizializzo il campo di gioco
+        mostri_g1 = new ArrayList<>();
+        mostri_g2 = new ArrayList<>();
+        magie_g1 = new ArrayList<>();
+        magie_g2 = new ArrayList<>();
+        effetti = new Stack();
         inizializza();
         gioco();
     }
@@ -49,7 +66,7 @@ public class CampoGioco {
                 System.out.println ("Si è verificato un errore: " + e);
             }
         }while(nome1.equals(""));
-        g1 = new Giocatore(nome1,this);
+        g1 = new Giocatore(nome1,this,mostri_g1,magie_g1);
         System.out.println("Giocatore 2, inserisci il tuo nome: ");
         do{
             try {
@@ -58,7 +75,7 @@ public class CampoGioco {
                 System.out.println ("Si è verificato un errore: " + e);
             }
         }while(nome2.equals(""));
-        g2 = new Giocatore(nome2,this);
+        g2 = new Giocatore(nome2,this,mostri_g1,magie_g2);
         //Visualizzo i mazzi
         System.out.println("\nMazzo di " + g1.getNome());
         g1.stampaMazzo();
@@ -69,5 +86,27 @@ public class CampoGioco {
         g1.stampaMano();
         System.out.println("\nCarte iniziali di " + g2.getNome());
         g2.stampaMano();
+    }
+    public void stampaMagie(){
+        int i;
+        System.out.println("Magie giocatore " + g1.getNome());
+        for(i=0;i<magie_g1.size();i++){
+            System.out.println(""+magie_g1.get(i));
+        }
+        System.out.println("Magie giocatore " + g2.getNome());
+        for(i=0;i<magie_g1.size();i++){
+            System.out.println(""+magie_g2.get(i));
+        }
+    }
+    public void stampaMostri(){
+        int i;
+        System.out.println("Mostri giocatore " + g1.getNome());
+        for(i=0;i<magie_g1.size();i++){
+            System.out.println(""+mostri_g1.get(i));
+        }
+        System.out.println("Mostri giocatore " + g2.getNome());
+        for(i=0;i<magie_g1.size();i++){
+            System.out.println(""+mostri_g2.get(i));
+        }
     }
 }
