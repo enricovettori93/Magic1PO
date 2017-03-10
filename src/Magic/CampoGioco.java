@@ -173,4 +173,19 @@ public class CampoGioco {
     public String getNomeG2(){
         return g2.getNome();
     }
+    /*
+    Giocatore g: giocatore che deve tappare il mostro nella sua lista
+    index: indice del mostro da tappare
+    */
+    public void tapMonster(Giocatore g, int index){
+        //TAPPO IL MOSTRO DI G1
+        if(g.hashCode()==g1.hashCode()){
+            
+        }
+        //TAPPO IL MOSTRO DI G2
+        else{
+            
+        }
+        System.out.println("Ho tappato il mostro " + index);
+    }
 }
