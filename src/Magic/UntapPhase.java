@@ -46,8 +46,8 @@ public class UntapPhase implements Phase {
                             System.out.println("Indice errato");
                         }
                         else{
-                            //TAPPA IL MOSTRO INDICATO
-                            System.out.println("Ho tappato il mostro " + input);
+                            //TAPPA IL MOSTRO INDICATO NEL CAMPO DI GIOCO
+                            cg.tapMonster(g,input);
                         }
                     }
                 } catch (IOException ex) {
@@ -71,8 +71,8 @@ public class UntapPhase implements Phase {
                             System.out.println("Indice errato");
                         }
                         else{
-                            //TAPPA IL MOSTRO INDICATO
-                            System.out.println("Ho tappato il mostro " + input);
+                            //TAPPA IL MOSTRO INDICATO NEL CAMPO DI GIOCO
+                            cg.tapMonster(g,input);
                         }
                     }
                 } catch (IOException ex) {
