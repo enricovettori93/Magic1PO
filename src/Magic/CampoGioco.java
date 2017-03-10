@@ -100,12 +100,44 @@ public class CampoGioco {
         }
         System.out.println("\n");
     }
+    public void stampaMagieG1(){
+        int i;
+        System.out.println("\nMagie giocatore " + g1.getNome());
+        for(i=0;i<magie_g1.size();i++){
+            System.out.print(" "+magie_g1.get(i));
+        }
+        System.out.println("\n");
+    }
+    public void stampaMagieG2(){
+        int i;
+        System.out.println("\nMagie giocatore " + g2.getNome());
+        for(i=0;i<magie_g2.size();i++){
+            System.out.print(" "+magie_g2.get(i));
+        }
+        System.out.println("\n");
+    }
     public void stampaMostri(){
         int i;
         System.out.println("\nMostri giocatore " + g1.getNome());
         for(i=0;i<mostri_g1.size();i++){
             System.out.print(" "+mostri_g1.get(i));
         }
+        System.out.println("\nMostri giocatore " + g2.getNome());
+        for(i=0;i<mostri_g2.size();i++){
+            System.out.print(" "+mostri_g2.get(i));
+        }
+        System.out.println("\n");
+    }
+    public void stampaMostriG1(){
+        int i;
+        System.out.println("\nMostri giocatore " + g1.getNome());
+        for(i=0;i<mostri_g1.size();i++){
+            System.out.print(" "+mostri_g1.get(i));
+        }
+        System.out.println("\n");
+    }
+    public void stampaMostriG2(){
+        int i;
         System.out.println("\nMostri giocatore " + g2.getNome());
         for(i=0;i<mostri_g2.size();i++){
             System.out.print(" "+mostri_g2.get(i));
@@ -128,5 +160,17 @@ public class CampoGioco {
         else{
             magie_g2.add(i);
         }
+    }
+    public int getHashCodeG1(){
+        return g1.hashCode();
+    }
+    public int getHashCodeG2(){
+        return g2.hashCode();
+    }
+    public String getNomeG1(){
+        return g1.getNome();
+    }
+    public String getNomeG2(){
+        return g2.getNome();
     }
 }
