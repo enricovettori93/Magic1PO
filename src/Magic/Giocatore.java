@@ -26,7 +26,7 @@ public class Giocatore {
     //Costruttore
     public Giocatore(String nome, CampoGioco cg){
         this.nome=nome;
-        lifePoints=20;
+        lifePoints=10;
         this.cg=cg;
         mazzo = new Stack<>();
         mano = new ArrayList<>();
@@ -55,6 +55,7 @@ public class Giocatore {
     }
     //Metodi per gestire il mazzo
     public void creaMazzo(){
+        //DA IMPLEMENTARE IL FATTO CHE L'UTENTE DEBBA CREARSI IL MAZZO DI CARTE
         Random rand = new Random();
         int randomInt;
         for (int i = 0; i < 20; i++){
