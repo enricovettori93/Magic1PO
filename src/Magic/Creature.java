@@ -1,24 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Magic;
 
 /**
- *
+ * Rappresents a Creature (CREATURA)
  * @author Enrico
  */
-//CREATURA
 public class Creature extends Card {
+    
+    /**
+     * Indicates if the Creature is untapped or not
+     */
     private boolean untapped;
-    public Creature(String nome, String descrizione){
-        this.nome=nome;
-        this.descrizione=descrizione;
+    
+    /**
+     * Create a new Creature (CREATURA)
+     * @param name The Creature name
+     * @param description The Creature description
+     */
+    public Creature(String name, String description){
+        this.name=name;
+        this.description=description;
         untapped=true;
     }
     @Override
-    public void eseguiEffetto(){
+    public void execute(){
         System.out.println("Eseguo l'effetto della creatura");
     }
 }

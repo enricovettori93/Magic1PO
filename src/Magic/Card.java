@@ -1,32 +1,58 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Magic;
 
 /**
- *
+ * Rappresents a card
  * @author Enrico
  */
-public class Card {
-    //ATTRIBUTI
-    String nome;
-    String descrizione;
+public abstract class Card {
+    /** The card name */
+    String name;
+    /** The card description */
+    String description;
+    
+    /**
+     * Base constructor
+     */
     public Card(){}
-    //GETTER E SETTER
-    public void setNome(String nome){
-        this.nome=nome;
+    
+    // <editor-fold defaultstate="collapsed" desc="Getters & Setters">
+    
+    /**
+     * Set the card name
+     * @param name The card name
+     */
+    public void setName(String name){
+        this.name=name;
     }
-    public String getNome(){
-        return nome;
+    
+    /**
+     * Gets the card name
+     * @return The card name
+     */
+    public String getName(){
+        return name;
     }
-    public void setDescrizione(String descrizione){
-        this.descrizione=descrizione;
+    
+    /**
+     * Set the card description
+     * @param description The card description
+     */
+    public void setDescription(String description){
+        this.description=description;
     }
-    public String getDescrizione(){
-        return descrizione;
+    
+    /**
+     * Gets the card description
+     * @return The card description
+     */
+    public String getDescription(){
+        return description;
     }
-    //METODO DI EFFETTO
-    public void eseguiEffetto(){}
+    // </editor-fold>
+    
+    /**
+     * The <i>specific</i> effect of the card. 
+     * Each card that extends this class must provide its own implementation.
+     */
+    public abstract void execute();
 }

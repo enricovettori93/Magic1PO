@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Magic;
 
 import java.io.BufferedReader;
@@ -14,10 +9,10 @@ import java.io.InputStreamReader;
  * @author Enrico
  */
 public class Turno {
-    Giocatore g;
+    Player g;
     InputStreamReader reader;
     BufferedReader myInput;
-    public Turno(Giocatore g){
+    public Turno(Player g){
         this.g=g;
         reader = new InputStreamReader(System.in);
         myInput = new BufferedReader(reader);

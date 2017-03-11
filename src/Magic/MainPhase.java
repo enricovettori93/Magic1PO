@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Magic;
 
 import java.io.BufferedReader;
@@ -10,39 +5,63 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
+ * Rappresents the main phase
  *
  * @author Enrico
  */
 public class MainPhase implements Phase {
-    private CampoGioco cg;
-    private Giocatore g;
-    InputStreamReader reader;
-    BufferedReader myInput;
-    public MainPhase(CampoGioco cg, Giocatore g){
-        this.cg=cg;
-        this.g=g;
+
+    /**
+     * The playground
+     */
+    private Playground playground;
+
+    /**
+     * The player
+     */
+    private Player player;
+
+    /**
+     * The input stream
+     */
+    private InputStreamReader reader;
+
+    /**
+     * The buffer
+     */
+    private BufferedReader myInput;
+
+    /**
+     * Creats a new Main pahse
+     *
+     * @param playground The playground
+     * @param player The player
+     */
+    public MainPhase(Playground playground, Player player) {
+        this.playground = playground;
+        this.player = player;
         reader = new InputStreamReader(System.in);
         myInput = new BufferedReader(reader);
     }
+
     @Override
     public void initPhase() {
-        System.out.println(g.getNome() + " quale carta desideri giocare (indicare con un intero l'indice della carta)?");
-        g.stampaMano();
+        System.out.println(player.getNome() + " quale carta desideri giocare (indicare con un intero l'indice della carta)?");
+        player.stampaMano();
         System.out.println("");
-        int input=0;
-        do{
+        int input = 0;
+        do {
             try {
                 System.out.print("\n-> ");
-                input=Integer.parseInt(myInput.readLine());
-                if((input<1)||(input>g.mano.size()+1)){
+                input = Integer.parseInt(myInput.readLine());
+                if ((input < 1) || (input > player.mano.size() + 1)) {
                     System.out.println("Indice errato");
-                }
-                else{
-                    g.giocaCarta(input);
+                } else {
+                    player.giocaCarta(input);
                 }
             } catch (IOException ex) {
-                System.out.println ("Si è verificato un errore: " + ex);
+                System.out.println("Si è verificato un errore: " + ex);
             }
-        }while((input>g.mano.size()+1)||(input<1));
+        } while ((input > player.mano.size() + 1) || (input < 1));
     }
 }

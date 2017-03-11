@@ -1,24 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Magic;
 
 /**
+ * Rappresnets the end phase
  *
  * @author Enrico
  */
 public class EndPhase implements Phase {
-    private CampoGioco cg;
-    private Giocatore g;
-    public EndPhase(CampoGioco cg, Giocatore g){
-        this.cg=cg;
-        this.g=g;
+
+    /**
+     * The playground
+     */
+    private Playground playground;
+
+    /**
+     * The player
+     */
+    private Player player;
+
+    /**
+     * Initalize the end phase
+     *
+     * @param playground The playground
+     * @param player The player
+     */
+    public EndPhase(Playground playground, Player player) {
+        this.playground = playground;
+        this.player = player;
     }
+
     @Override
     public void initPhase() {
         System.out.println("Sono nella End phase");
     }
-    
+
 }

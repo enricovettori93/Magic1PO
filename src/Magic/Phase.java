@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Magic;
 
 /**
- *
+ * Rappresents a player round phase
  * @author Enrico
  */
 public interface Phase {
+    /**
+     * The method that initialize the phase
+     */
     public void initPhase();
 }
