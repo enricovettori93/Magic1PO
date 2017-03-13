@@ -14,6 +14,7 @@ public class Sorcery extends Card{
     public Sorcery(String name, String description){
         this.name=name;
         this.description=description;
+        this.type="Sourcery";
     }
     @Override
     public void execute(){
