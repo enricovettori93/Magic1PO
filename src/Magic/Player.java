@@ -167,8 +167,7 @@ public class Player {
             }while(carta != 1);
             i++;
             mazzo.add(new Instant("Omeophaty","Omeophaty does nothing"));
-        }while(i<20);
-        System.out.println("Mescolando");
+        }while(i<6);
         Collections.shuffle(mazzo);
     }
 
@@ -206,41 +205,44 @@ public class Player {
 
     public void stampaMano() {
         for (int i = 0; i < mano.size(); i++) {
-            System.out.print(mano.get(i).getName() + " ");
+            System.out.print((i+1) + "-" + mano.get(i).getName() + " " + mano.get(i).getType() + " ");
         }
     }
     
     /**
      *Check if the player can and would use istant's card, otherwise don't do nothing
-     * Return ttue: if the player use an istans, false if don't want to play some istants
+     * Return true: if the player use an istans, false if don't want to play some istants
+     * @return 
      */
     public boolean checkIstantToPlay(){
-        System.out.println("Seleziona l'istantaneo da giocare (-1 per uscire).");
-        for (int i = 0; i < mano.size(); i++) {
-            System.out.print(mano.get(i).getName() + " " + mano.get(i).getType());
-        }
+        System.out.println(" vuoi giocare un istantaneo (-1 per uscire)?");
+        stampaMano();
         int carta=0;
         do{
-            try {
-                System.out.print("-> ");
-                carta = Integer.parseInt(myInput.readLine());
-            } catch (IOException ex) {
-                System.out.println("ahiahiaahi");
-            }
-            if(mano.get(carta).getType()=="Istant"){
-                playground.addStack(mano.get(carta-1));
+            do{
+                try {
+                    System.out.print("-> ");
+                    carta = Integer.parseInt(myInput.readLine());
+                } catch (IOException ex) {
+                    System.out.println("ahiahiaahi");
+                }
+                if(carta==-1){
+                    return false;
+                }
+            }while(carta<=0 || carta>mano.size()-1);
+            if("Istant".equals(mano.get(carta-1).getType())){
+                playground.addStack(mano.get(carta-1),this);
                 mano.remove(carta-1);
                 return true;
             }
-        }while((mano.get(carta).getType()!="Istant"));
+        }while((!"Istant".equals(mano.get(carta-1).getType())));
         return false;
     }
     
     public void giocaCarta(int indice) {
-        //SI DEVE CONTROLLARE SE è MOSTRO O MAGIA CON IF THEN ELSE, ORA ADDO ALLA LISTA MOSTRI DI DEFAULT
         if("Istant".equals(mano.get(indice-1).getType()) || "Enchantment".equals(mano.get(indice-1).getType())  || "Sourcery".equals(mano.get(indice-1).getType())){
             addMagic(mano.get(indice-1));
-            playground.addStack(mano.get(indice-1));
+            playground.addStack(mano.get(indice-1),this);
             playground.checkIstantOtherPlayer(this);
         }
         else{
