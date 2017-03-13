@@ -14,6 +14,7 @@ public class Instant extends Card{
     public Instant(String name, String description){
         this.name=name;
         this.description=description;
+        this.type="Istant";
     }
     @Override
     public void execute(){
