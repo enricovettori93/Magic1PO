@@ -19,6 +19,7 @@ public class Creature extends Card {
     public Creature(String name, String description){
         this.name=name;
         this.description=description;
+        this.type="Creature";
         untapped=true;
     }
     @Override
