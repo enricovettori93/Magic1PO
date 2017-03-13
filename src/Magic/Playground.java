@@ -130,16 +130,20 @@ public class Playground {
         boolean istantp2 = true;
         if (player.equals(this.player1)) {
             while(istantp1==true && istantp2==true){
+                System.out.print(""+player2.getNome());
                 istantp2=player2.checkIstantToPlay();
-                if(istantp2==false){
+                if(istantp2==true){
+                    System.out.print(""+player1.getNome());
                     istantp1=player1.checkIstantToPlay();
                 }
             }
         } //CONTROLLO SE IL G2 HA ISTANTANEI DA GIOCARE DI RISPOSTA
         else {
             while(istantp1==true && istantp2==true){
+                System.out.print(""+player1.getNome());
                 istantp1=player1.checkIstantToPlay();
-                if(istantp1==false){
+                if(istantp1==true){
+                    System.out.print(""+player2.getNome());
                     istantp2=player2.checkIstantToPlay();
                 }
             }
@@ -151,15 +155,28 @@ public class Playground {
      * Execute the card's stack
      */
     public void execStack(){
+        System.out.println("Eseguo gli effetti in ordine LIFO");
+        int i;
+        for(i=effetti.size()-1;i>0;i--){
+            System.out.println(i + " - " + effetti.get(i).getName() + " " + effetti.get(i).getType());
+        }
+        i=effetti.size()-1;
         while(!effetti.isEmpty()){
-            effetti.pop();
+            Card app;
+            app = effetti.pop();
+            System.out.println("Effetto della carta " + i + " - " + app.getName());
+            app.execute();
+            i--;
         }
     }
     
     /**
      * Add a card into stack
+     * @param carta: played card
+     * @param p: player who play the card
      */
-    public void addStack(Card carta){
+    //DA AGGIUNGERE NELLO STACK QUALE GIOCATORE HA GIOCATO QUESTA CARTA
+    public void addStack(Card carta, Player p){
         effetti.push(carta);
     }
 }
