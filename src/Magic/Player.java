@@ -245,6 +245,7 @@ public class Player {
         }
         else{
             addMonster(mano.get(indice-1));
+            playground.checkIstantOtherPlayer(this);
         }
         //playground.addMostro(mano.get(indice - 1), this);
         mano.remove(indice - 1);
