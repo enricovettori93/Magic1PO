@@ -10,6 +10,9 @@ public abstract class Card {
     /** The card description */
     String description;
     
+    /**The card type */
+    String type;
+    
     /**
      * Base constructor
      */
@@ -47,6 +50,13 @@ public abstract class Card {
      */
     public String getDescription(){
         return description;
+    }
+    /**
+     * Gets the card type
+     * @return The card type
+     */
+    public String getType(){
+        return type;
     }
     // </editor-fold>
     
