@@ -18,7 +18,7 @@ public class Playground {
     /**
      * The stack of effects present in the playground
      */
-    protected Stack<Integer> effetti;
+    protected Stack<Card> effetti;
 
     /**
      * Initialize a new playground
@@ -27,7 +27,6 @@ public class Playground {
         effetti = new Stack();
         this.player1 = new Player(this);
         this.player2 = new Player(this);
-
         inizializza();
         gioco();
     }
@@ -72,6 +71,10 @@ public class Playground {
                 System.out.println("Si è verificato un errore: " + e);
             }
         } while (player2.getNome().equals(""));
+        player1.creaMazzo();
+        player1.creaMano();
+        player2.creaMazzo();
+        player2.creaMano();
         //Visualizzo i mazzi
         System.out.println("\nMazzo di " + player1.getNome());
         player1.stampaMazzo();
@@ -88,7 +91,7 @@ public class Playground {
         int i;
         System.out.println("\nMagie giocatore " + player.getNome());
         for (i = 0; i < player.getMagics().size(); i++) {
-            System.out.print(" " + player.getMagics().get(i));
+            System.out.print(" " + player.getMagics().get(i).name);
         }
         System.out.println("\n");
     }
@@ -98,20 +101,10 @@ public class Playground {
         int i;
         System.out.println("\nMostri giocatore " + player.getNome());
         for (i = 0; i < player.getMonsters().size(); i++) {
-            System.out.print(" " + player.getMonsters().get(i));
+            System.out.print(" " + player.getMonsters().get(i).name);
         }
         System.out.println("\n");
     }
-
-    //METODI PER AGGIUNGERE MOSTRI E MAGIE ALLE LISTE IN CAMPO IN BASE AL GIOCATORE CHE HA GIOCATO LA CARTA
-    public void addMostro(Integer i, Player player) {
-        player.addMonster(i);
-    }
-
-    public void addMagia(Integer i, Player player) {
-        player.addMagic(i);
-    }
-
 
     /*
     Player g: giocatore che deve tappare il mostro nella sua lista
@@ -126,5 +119,47 @@ public class Playground {
 
         }
         System.out.println("Ho tappato il mostro " + index);
+    }
+
+    /*
+    Player player: giocatore che esegue la prima carta dello stack
+     */
+    public void checkIstantOtherPlayer(Player player) {
+        //CONTROLLO SE IL G1 HA ISTANTANEI DA GIOCARE DI RISPOSTA
+        boolean istantp1 = true;
+        boolean istantp2 = true;
+        if (player.equals(this.player1)) {
+            while(istantp1==true && istantp2==true){
+                istantp2=player2.checkIstantToPlay();
+                if(istantp2==false){
+                    istantp1=player1.checkIstantToPlay();
+                }
+            }
+        } //CONTROLLO SE IL G2 HA ISTANTANEI DA GIOCARE DI RISPOSTA
+        else {
+            while(istantp1==true && istantp2==true){
+                istantp1=player1.checkIstantToPlay();
+                if(istantp1==false){
+                    istantp2=player2.checkIstantToPlay();
+                }
+            }
+        }
+        execStack();
+    }
+    
+    /**
+     * Execute the card's stack
+     */
+    public void execStack(){
+        while(!effetti.isEmpty()){
+            effetti.pop();
+        }
+    }
+    
+    /**
+     * Add a card into stack
+     */
+    public void addStack(Card carta){
+        effetti.push(carta);
     }
 }
