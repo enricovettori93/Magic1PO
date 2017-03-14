@@ -263,8 +263,6 @@ public class Player {
             mano.remove(indice-1);
             playground.checkIstantOtherPlayer(this);
         }
-        //playground.addMostro(mano.get(indice - 1), this);
-        mano.remove(indice - 1);
         //CODICE DI DEBUG
         playground.stampaMagie(playground.player1);
         playground.stampaMagie(playground.player2);
@@ -273,7 +271,9 @@ public class Player {
     }
     // </editor-fold>
     
-
+    public void tapMonster(int index){
+        monsters.get(index-1).setTapped(true);
+    }
     /**
      * Initalize a new round
      */
