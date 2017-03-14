@@ -19,12 +19,14 @@ public class Playground {
      * The stack of effects present in the playground
      */
     protected Stack<Card> effetti;
+    protected Stack<Player> cartagiocatada;
 
     /**
      * Initialize a new playground
      */
     public Playground() {
         effetti = new Stack();
+        cartagiocatada = new Stack();
         this.player1 = new Player(this);
         this.player2 = new Player(this);
         inizializza();
@@ -161,13 +163,15 @@ public class Playground {
         System.out.println("Eseguo gli effetti in ordine LIFO");
         int i;
         for(i=effetti.size()-1;i>=0;i--){
-            System.out.println(i + " - " + effetti.get(i).getName() + " " + effetti.get(i).getType());
+            System.out.println(i + " - " + effetti.get(i).getName() + " " + effetti.get(i).getType() + " giocata da " + cartagiocatada.get(i).getNome());
         }
         i=effetti.size()-1;
         while(!effetti.isEmpty()){
             Card app;
+            Player app_p;
+            app_p = cartagiocatada.pop();
             app = effetti.pop();
-            System.out.println("Effetto della carta " + i + " - " + app.getName());
+            System.out.println("Effetto della carta " + i + " - " + app.getName() + " giocata da " + app_p.getNome());
             app.execute();
             i--;
         }
@@ -180,6 +184,12 @@ public class Playground {
      */
     //DA AGGIUNGERE NELLO STACK QUALE GIOCATORE HA GIOCATO QUESTA CARTA
     public void addStack(Card carta, Player p){
+        if(p.equals(player1)){
+            cartagiocatada.push(player1);
+        }
+        else{
+            cartagiocatada.push(player2);
+        }
         effetti.push(carta);
     }
 }
