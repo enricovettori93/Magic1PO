@@ -218,7 +218,7 @@ public class Player {
             }
         }
         if(!mano.isEmpty() && iveIstant == true){
-            System.out.println(" vuoi giocare un istantaneo (-1 per uscire)?");
+            System.out.println(getNome() + " vuoi giocare un istantaneo (-1 per uscire)?");
             Card app;
             stampaMano();
             int carta=0;
