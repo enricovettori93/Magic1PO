@@ -14,14 +14,6 @@ public class Round {
     private Player player;
     List<Phase> fasi;
 
-    /*
-    Decodifica fasi:
-    0 - Draw
-    1 - Untap
-    2 - Combat
-    3 - Main
-    4 - End
-     */
     public Round(Playground playground, Player player) {
         this.playground = playground;
         this.player = player;
@@ -35,6 +27,7 @@ public class Round {
         Si va a controllare nel campo da gioco gli eventuali effetti attivi che modificano
         le fasi e si crea il vettore di fasi
          */
+        
         fasi.add(new DrawPhase(playground, player));
         if(player.isInGame()){
             fasi.add(new UntapPhase(playground, player));
