@@ -63,6 +63,11 @@ public class UntapPhase implements Phase {
      */
     private void handlePlayer(Player player) {
         if (player.getMonsters().size() > 0) {
+            for(int i = 0;i<player.getMonsters().size();i++){
+                if(player.getMonsters().get(i).getTapped()==true){
+                    player.getMonsters().get(i).setTapped(false);
+                }
+            }
             System.out.println(player.getNome() + " quali mostri vuoi tappare (indicare con un numero intero l'indice, -1 per non tappare nulla)?");
             for (int i = 0; i < player.getMonsters().size(); i++) {
                 System.out.print((i+1) + "-" + player.getMonsters().get(i).getName() + " ");
@@ -81,6 +86,9 @@ public class UntapPhase implements Phase {
             } catch (IOException ex) {
                 System.out.println("Si è verificato un errore: " + ex);
             }
+        }
+        else{
+            System.out.println("\nNon ci sono mostri da tappare.");
         }
     }
 
