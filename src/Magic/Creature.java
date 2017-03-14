@@ -53,6 +53,19 @@ public class Creature extends Card {
         return defence;
     }
     
+    public void modifyDefence(int quantity){
+        this.defence = this.defence - quantity;
+    }
+    
+    public void modifyAttack(int quantity){
+        this.attack = this.attack - quantity;
+    }
+    
+    public void modifyAttackDefence(int quantity){
+        this.defence = this.defence - quantity;
+        this.attack = this.attack - quantity;
+    }
+    
     @Override
     public void execute(){
         System.out.println("Eseguo l'effetto della creatura");
