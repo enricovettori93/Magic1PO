@@ -255,10 +255,12 @@ public class Player {
             if(!"Istant".equals(mano.get(indice-1).getType()))
                 addMagic(mano.get(indice-1));
             playground.addStack(mano.get(indice-1),this);
+            mano.remove(indice-1);
             playground.checkIstantOtherPlayer(this);
         }
         else{
             addMonster((Creature)mano.get(indice-1));
+            mano.remove(indice-1);
             playground.checkIstantOtherPlayer(this);
         }
         //playground.addMostro(mano.get(indice - 1), this);
