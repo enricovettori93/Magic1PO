@@ -73,19 +73,6 @@ public class Player {
      * The buffer reader
      */
     private BufferedReader myInput;
-    
-    /**
-     * Creates a new player
-     *
-     * @param name The player name
-     * @param playground The playground
-     */
-    public Player(String name, Playground playground) {
-        this.name = name;
-        this.playground = playground;
-        reader = new InputStreamReader(System.in);
-        myInput = new BufferedReader(reader);
-    }
 
     /**
      * Creates a new player
@@ -147,7 +134,8 @@ public class Player {
     public void addMonster(List<Creature> monsters) {
         this.monsters.addAll(monsters);
     }
-
+    
+    
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="Deck handlers">
