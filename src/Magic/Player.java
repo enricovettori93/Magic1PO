@@ -210,7 +210,14 @@ public class Player {
      * @return 
      */
     public boolean checkIstantToPlay(){
-        if(!mano.isEmpty()){
+        boolean iveIstant = false;
+        int i;
+        for(i=0;i<mano.size();i++){
+            if("Istant".equals(mano.get(i).getType())){
+                iveIstant=true;
+            }
+        }
+        if(!mano.isEmpty() && iveIstant == true){
             System.out.println(" vuoi giocare un istantaneo (-1 per uscire)?");
             Card app;
             stampaMano();
@@ -255,7 +262,6 @@ public class Player {
             playground.checkIstantOtherPlayer(this);
         }
         else{
-            System.out.println("Sto aggiungendo il mostro");
             addMonster((Creature)mano.get(indice-1));
             mano.remove(indice-1);
             playground.checkIstantOtherPlayer(this);
