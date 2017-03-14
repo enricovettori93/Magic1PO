@@ -48,6 +48,7 @@ public class UntapPhase implements Phase {
         System.out.println("Sono nella untap phase");
 
         //DEVO ACCEDERE ALLE LISTE DI MOSTRI IN CAMPO PER POTER SCEGLIERE QUALI TAPPARE/NON TAPPARE
+        //SI DEVONO UNTAPPARE I MOSTRI.. FA ELENA
         //SONO NEL GIOCATORE 1
         if (this.player.equals(this.playground.player1)) {
             this.handlePlayer(playground.player1);
