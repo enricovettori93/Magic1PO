@@ -31,6 +31,7 @@ public class EndPhase implements Phase {
     @Override
     public void initPhase() {
         System.out.println("Sono nella End phase");
+        player.cleanMagicsOnGround();
     }
 
 }
