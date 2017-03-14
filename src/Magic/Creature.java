@@ -7,21 +7,50 @@ package Magic;
 public class Creature extends Card {
     
     /**
-     * Indicates if the Creature is untapped or not
+     * Indicates if the Creature is tapped or not
      */
-    private boolean untapped;
+    private boolean tapped;
+    private int attack;
+    private int defence;
     
     /**
      * Create a new Creature (CREATURA)
      * @param name The Creature name
      * @param description The Creature description
      */
-    public Creature(String name, String description){
+    public Creature(String name, String description, int attack, int defence){
         this.name=name;
         this.description=description;
         this.type="Creature";
-        untapped=true;
+        this.attack=attack;
+        this.defence=defence;
+        tapped=true;
     }
+    
+    public boolean getTapped(){
+        return tapped;
+    }
+    
+    public void setTapped(boolean state){
+        tapped=state;
+    }
+    
+    public void setAttack(int attack){
+        this.attack = attack;
+    }
+    
+    public int getAttack(){
+        return attack;
+    }
+    
+    public void setDefence(int defence){
+        this.defence = defence;
+    }
+    
+    public int getDefence(){
+        return defence;
+    }
+    
     @Override
     public void execute(){
         System.out.println("Eseguo l'effetto della creatura");
