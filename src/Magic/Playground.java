@@ -160,7 +160,7 @@ public class Playground {
     public void execStack(){
         System.out.println("Eseguo gli effetti in ordine LIFO");
         int i;
-        for(i=effetti.size()-1;i>0;i--){
+        for(i=effetti.size()-1;i>=0;i--){
             System.out.println(i + " - " + effetti.get(i).getName() + " " + effetti.get(i).getType());
         }
         i=effetti.size()-1;
