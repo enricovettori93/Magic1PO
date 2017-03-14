@@ -37,7 +37,10 @@ public class Playground {
     private void gioco() {
         while (player1.isInGame() && player2.isInGame()) {
             player1.initTurno();
-            if (player1.isInGame()) {
+            if (!player1.isInGame()) {
+                System.out.println("Bravo " + player2.getNome() + " hai vinto!");
+            }
+            else{
                 player2.initTurno();
             }
         }
