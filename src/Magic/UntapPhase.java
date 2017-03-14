@@ -46,9 +46,7 @@ public class UntapPhase implements Phase {
     @Override
     public void initPhase() {
         System.out.println("Sono nella untap phase");
-
         //DEVO ACCEDERE ALLE LISTE DI MOSTRI IN CAMPO PER POTER SCEGLIERE QUALI TAPPARE/NON TAPPARE
-        //SI DEVONO UNTAPPARE I MOSTRI.. FA ELENA
         //SONO NEL GIOCATORE 1
         if (this.player.equals(this.playground.player1)) {
             this.handlePlayer(playground.player1);
@@ -67,8 +65,7 @@ public class UntapPhase implements Phase {
         if (player.getMonsters().size() > 0) {
             System.out.println(player.getNome() + " quali mostri vuoi tappare (indicare con un numero intero l'indice, -1 per non tappare nulla)?");
             for (int i = 0; i < player.getMonsters().size(); i++) {
-                //CONTROLLARE SE UN MOSTRO È GIA' TAPPATO O MENO
-                System.out.print(" " + player.getMonsters().get(i));
+                System.out.print((i+1) + " " + player.getMonsters().get(i).getName() + " ");
             }
             try {
                 System.out.print("\n-> ");
