@@ -97,7 +97,7 @@ public class Player {
         reader = new InputStreamReader(System.in);
         myInput = new BufferedReader(reader);
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="Getters & Setters">
     public String getNome() {
         return name;
@@ -135,6 +135,7 @@ public class Player {
         this.magics.addAll(magics);
     }
 
+    /*Lista de creature non più di carte!*/
     public List<Creature> getMonsters() {
         return monsters;
     }
