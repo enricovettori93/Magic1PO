@@ -112,21 +112,6 @@ public class Playground {
     }
 
     /*
-    Player g: giocatore che deve tappare il mostro nella sua lista
-    index: indice del mostro da tappare
-     */
-    public void tapMonster(Player player, int index) {
-        //TAPPO IL MOSTRO DI G1
-        if (player.equals(this.player1)) {
-
-        } //TAPPO IL MOSTRO DI G2
-        else {
-
-        }
-        System.out.println("Ho tappato il mostro " + index);
-    }
-
-    /*
     Player player: giocatore che esegue la prima carta dello stack
      */
     public void checkIstantOtherPlayer(Player player) {
