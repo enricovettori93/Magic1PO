@@ -156,6 +156,7 @@ public class Player {
         int carta=0;
         System.out.println(this.getNome() + " seleziona la carta " + (i+1) + " da inserire nel mazzo (presente solo omeophaty)");
         System.out.println("1 - Omeophaty");
+        System.out.println("2 - Gemin (mostro)");
         do{
             do{
                 try {
@@ -164,9 +165,13 @@ public class Player {
                 } catch (IOException ex) {
                     System.out.println("ahiahiaahi");
                 }
-            }while(carta != 1);
+            }while(carta != 1 && carta != 2);
             i++;
-            mazzo.add(new Instant("Omeophaty","Omeophaty does nothing"));
+            if(carta==1){
+                mazzo.add(new Instant("Omeophaty","Omeophaty does nothing"));
+            }else{
+                mazzo.add(new Creature("Gemin","Vortice di gioia",-5,-10));
+            }
         //MAZZO DI 6 CARTE PER DEBUG
         }while(i<6);
         Collections.shuffle(mazzo);
@@ -242,6 +247,9 @@ public class Player {
                     mano.remove(carta);
                     return true;
                 }
+                else{
+                    System.out.println("Tipologia di carta non valida");
+                }
             }while((!"Istant".equals(app.getType())));
             return false;
         }
@@ -259,17 +267,11 @@ public class Player {
             playground.checkIstantOtherPlayer(this);
         }
         else{
+            System.out.println("Sto aggiungendo il mostro");
             addMonster((Creature)mano.get(indice-1));
             mano.remove(indice-1);
             playground.checkIstantOtherPlayer(this);
         }
-        /*
-        //CODICE DI DEBUG
-        playground.stampaMagie(playground.player1);
-        playground.stampaMagie(playground.player2);
-        playground.stampaMostri(playground.player1);
-        playground.stampaMostri(playground.player2);
-        */
     }
     // </editor-fold>
     
@@ -286,18 +288,18 @@ public class Player {
     
     public void printPlayerPlayground(){
         
-        System.out.println("Sorceries : ");
+        System.out.print("Sorceries : ");
         for(int i=0; i<getMagics().size();i++)
             if(getMagics().get(i).getType().equals("Sorcery"))
-                System.out.println(getMagics().get(i).getName());
+                System.out.print(getMagics().get(i).getName() + " ");
         
-        System.out.println("Enchantments : ");
+        System.out.print("Enchantments : ");
         for(int i=0; i<getMagics().size();i++)
             if(getMagics().get(i).getType().equals("Enchantment"))
-                System.out.println(getMagics().get(i).getName());
+                System.out.print(getMagics().get(i).getName() + " ");
         
-        System.out.println("Creatures : ");
+        System.out.print("Creatures : ");
         for(int i=0; i<getMonsters().size();i++)
-            System.out.println(getMonsters().get(i).getName());
+            System.out.print(getMonsters().get(i).getName() + " ");
     }
 }
