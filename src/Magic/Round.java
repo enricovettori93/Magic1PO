@@ -41,6 +41,10 @@ public class Round {
             fasi.add(new CombatPhase(playground, player));
             fasi.add(new MainPhase(playground, player));
             fasi.add(new EndPhase(playground, player));
+            
+            System.out.println("\n");
+            playground.printPlayground(player);
+            
             for (i = 0; i < fasi.size(); i++) {
                 fasi.get(i).initPhase();
             }

@@ -39,12 +39,8 @@ public class Playground {
     private void gioco() {
         while (player1.isInGame() && player2.isInGame()) {
             player1.initTurno();
-            if (!player1.isInGame()) {
-                System.out.println("Bravo " + player2.getNome() + " hai vinto!");
-            }
-            else{
+            if (player1.isInGame())
                 player2.initTurno();
-            }
         }
         if (player1.isInGame()) {
             System.out.println("Bravo " + player1.getNome() + " hai vinto!");
@@ -76,20 +72,26 @@ public class Playground {
                 System.out.println("Si è verificato un errore: " + e);
             }
         } while (player2.getNome().equals(""));
+        
+        //crea mazzo e mano
         player1.creaMazzo();
         player1.creaMano();
         player2.creaMazzo();
         player2.creaMano();
-        //Visualizzo i mazzi
+        
+        //Visualizzo i mazzi e le mani dei giocatori
         System.out.println("\nMazzo di " + player1.getNome());
         player1.stampaMazzo();
+        System.out.println("\nMano di " + player1.getNome());
+        player1.stampaMano();
+        System.out.println("\n");
+        
         System.out.println("\nMazzo di " + player2.getNome());
         player2.stampaMazzo();
-        //Visualizzo le mani di entrambi i giocatori
-        System.out.println("\nCarte iniziali di " + player1.getNome());
-        player1.stampaMano();
-        System.out.println("\nCarte iniziali di " + player2.getNome());
+        System.out.println("\nMano di " + player2.getNome());
         player2.stampaMano();
+        System.out.println("\n");
+               
     }
 
     public void stampaMagie(Player player) {
@@ -176,5 +178,34 @@ public class Playground {
             cartagiocatada.push(player2);
         }
         effetti.push(carta);
+    }
+    
+    
+    public void printPlayground(Player caller){
+        
+        if(caller.equals(player1)){
+            System.out.println("===================================================================================D");
+            System.out.println("Carte in gioco di "+player1.getNome());
+            System.out.println("===================================================================================D");
+            player1.printPlayerPlayground();
+            System.out.println("===================================================================================D");
+            player2.printPlayerPlayground();
+            System.out.println("===================================================================================D");
+            System.out.println("Carte in gioco di "+player2.getNome());
+            System.out.println("===================================================================================D");
+        }
+        else{
+            System.out.println("===================================================================================D");
+            System.out.println("Carte in gioco di "+player2.getNome());
+            System.out.println("===================================================================================D");
+            player2.printPlayerPlayground();
+            System.out.println("===================================================================================D");
+            player1.printPlayerPlayground();
+            System.out.println("===================================================================================D");
+            System.out.println("Carte in gioco di "+player1.getNome());
+            System.out.println("===================================================================================D");
+        }
+        
+    
     }
 }

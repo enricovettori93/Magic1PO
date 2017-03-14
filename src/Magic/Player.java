@@ -154,12 +154,12 @@ public class Player {
     protected void creaMazzo() {
         int i=0;
         int carta=0;
+        System.out.println(this.getNome() + " seleziona la carta " + (i+1) + " da inserire nel mazzo (presente solo omeophaty)");
+        System.out.println("1 - Omeophaty");
         do{
             do{
-                System.out.println(this.getNome() + " seleziona la carta " + (i+1) + " da inserire nel mazzo (presente solo omeophaty)");
-                System.out.println("1 - Omeophaty");
                 try {
-                    System.out.print("-> ");
+                    System.out.print((i+1)+" di 20 : ");
                     carta = Integer.parseInt(myInput.readLine());
                 } catch (IOException ex) {
                     System.out.println("ahiahiaahi");
@@ -263,11 +263,13 @@ public class Player {
             mano.remove(indice-1);
             playground.checkIstantOtherPlayer(this);
         }
+        /*
         //CODICE DI DEBUG
         playground.stampaMagie(playground.player1);
         playground.stampaMagie(playground.player2);
         playground.stampaMostri(playground.player1);
         playground.stampaMostri(playground.player2);
+        */
     }
     // </editor-fold>
     
@@ -279,5 +281,23 @@ public class Player {
      */
     public void initTurno() {
         t = new Round(playground, this);
+    }
+    
+    
+    public void printPlayerPlayground(){
+        
+        System.out.println("Sorceries : ");
+        for(int i=0; i<getMagics().size();i++)
+            if(getMagics().get(i).getType().equals("Sorcery"))
+                System.out.println(getMagics().get(i).getName());
+        
+        System.out.println("Enchantments : ");
+        for(int i=0; i<getMagics().size();i++)
+            if(getMagics().get(i).getType().equals("Enchantment"))
+                System.out.println(getMagics().get(i).getName());
+        
+        System.out.println("Creatures : ");
+        for(int i=0; i<getMonsters().size();i++)
+            System.out.println(getMonsters().get(i).getName());
     }
 }
