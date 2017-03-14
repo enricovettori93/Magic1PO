@@ -78,7 +78,7 @@ public class UntapPhase implements Phase {
                         System.out.println("Indice errato");
                     } else {
                         //TAPPA IL MOSTRO INDICATO NEL CAMPO DI GIOCO
-                        playground.tapMonster(player, input);
+                        player.tapMonster(input);
                     }
                 }
             } catch (IOException ex) {
