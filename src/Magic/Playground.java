@@ -56,7 +56,7 @@ public class Playground {
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader myInput = new BufferedReader(reader);
         //Creo i giocatori
-        System.out.println("Giocatore 1, inserisci il tuo nome: ");
+        System.out.print("Giocatore 1, inserisci il tuo nome: ");
         do {
             try {
                 player1.setNome(myInput.readLine());
@@ -64,7 +64,7 @@ public class Playground {
                 System.out.println("Si è verificato un errore: " + e);
             }
         } while (player1.getNome().equals(""));
-        System.out.println("Giocatore 2, inserisci il tuo nome: ");
+        System.out.print("Giocatore 2, inserisci il tuo nome: ");
         do {
             try {
                 player2.setNome(myInput.readLine());
@@ -147,7 +147,7 @@ public class Playground {
      * Execute the card's stack
      */
     public void execStack(){
-        System.out.println("Eseguo gli effetti in ordine LIFO");
+        System.out.println("\n\nEseguo gli effetti in ordine LIFO");
         int i;
         for(i=effetti.size()-1;i>=0;i--){
             System.out.println(i + " - " + effetti.get(i).getName() + " " + effetti.get(i).getType() + " giocata da " + cartagiocatada.get(i).getNome());
@@ -184,26 +184,26 @@ public class Playground {
     public void printPlayground(Player caller){
         
         if(caller.equals(player1)){
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
             System.out.println("Carte in gioco di "+player1.getNome());
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
             player1.printPlayerPlayground();
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
             player2.printPlayerPlayground();
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
             System.out.println("Carte in gioco di "+player2.getNome());
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
         }
         else{
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
             System.out.println("Carte in gioco di "+player2.getNome());
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
             player2.printPlayerPlayground();
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
             player1.printPlayerPlayground();
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
             System.out.println("Carte in gioco di "+player1.getNome());
-            System.out.println("===================================================================================D");
+            System.out.println("===================================================================================");
         }
         
     
