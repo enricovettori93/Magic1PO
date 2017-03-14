@@ -151,7 +151,6 @@ public class Player {
     
     // <editor-fold defaultstate="collapsed" desc="Deck handlers">
     protected void creaMazzo() {
-        //DA IMPLEMENTARE IL FATTO CHE L'UTENTE DEBBA CREARSI IL MAZZO DI CARTE
         int i=0;
         int carta=0;
         do{
@@ -167,6 +166,7 @@ public class Player {
             }while(carta != 1);
             i++;
             mazzo.add(new Instant("Omeophaty","Omeophaty does nothing"));
+        //MAZZO DI 6 CARTE PER DEBUG
         }while(i<6);
         Collections.shuffle(mazzo);
     }
@@ -197,7 +197,8 @@ public class Player {
 
     // <editor-fold defaultstate="collapsed" desc="Hand handlers">
     protected void creaMano() {
-        for (int i = 0; i < 5; i++) {
+        //MANO DI 1 ELEMENTO PER DEBUG
+        for (int i = 0; i < 1; i++) {
             mano.add(mazzo.get(mazzo.size()-1));
             mazzo.remove(mazzo.size()-1);
         }
@@ -215,28 +216,36 @@ public class Player {
      * @return 
      */
     public boolean checkIstantToPlay(){
-        System.out.println(" vuoi giocare un istantaneo (-1 per uscire)?");
-        stampaMano();
-        int carta=0;
-        do{
+        if(!mano.isEmpty()){
+            System.out.println(" vuoi giocare un istantaneo (-1 per uscire)?");
+            Card app;
+            stampaMano();
+            int carta=0;
             do{
-                try {
-                    System.out.print("-> ");
-                    carta = Integer.parseInt(myInput.readLine());
-                } catch (IOException ex) {
-                    System.out.println("ahiahiaahi");
+                do{
+                    try {
+                        System.out.print("-> ");
+                        carta = Integer.parseInt(myInput.readLine());
+                        carta --;
+                    } catch (IOException ex) {
+                        System.out.println("ahiahiaahi");
+                    }
+                    if(carta==-1){
+                        return false;
+                    }
+                }while(carta<0 || carta>mano.size());
+                app=mano.get(carta);
+                if("Istant".equals(app.getType())){
+                    playground.addStack(app,this);
+                    mano.remove(carta);
+                    return true;
                 }
-                if(carta==-1){
-                    return false;
-                }
-            }while(carta<=0 || carta>mano.size()-1);
-            if("Istant".equals(mano.get(carta-1).getType())){
-                playground.addStack(mano.get(carta-1),this);
-                mano.remove(carta-1);
-                return true;
-            }
-        }while((!"Istant".equals(mano.get(carta-1).getType())));
-        return false;
+            }while((!"Istant".equals(app.getType())));
+            return false;
+        }
+        else{
+            return false;
+        }
     }
     
     public void giocaCarta(int indice) {
