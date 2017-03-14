@@ -36,12 +36,14 @@ public class Round {
         le fasi e si crea il vettore di fasi
          */
         fasi.add(new DrawPhase(playground, player));
-        fasi.add(new UntapPhase(playground, player));
-        fasi.add(new CombatPhase(playground, player));
-        fasi.add(new MainPhase(playground, player));
-        fasi.add(new EndPhase(playground, player));
-        for (i = 0; i < fasi.size(); i++) {
-            fasi.get(i).initPhase();
+        if(player.isInGame()){
+            fasi.add(new UntapPhase(playground, player));
+            fasi.add(new CombatPhase(playground, player));
+            fasi.add(new MainPhase(playground, player));
+            fasi.add(new EndPhase(playground, player));
+            for (i = 0; i < fasi.size(); i++) {
+                fasi.get(i).initPhase();
+            }
         }
     }
 }
