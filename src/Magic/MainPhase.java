@@ -46,7 +46,7 @@ public class MainPhase implements Phase {
 
     @Override
     public void initPhase() {
-        System.out.println(player.getNome() + " quale carta desideri giocare (indicare con un intero l'indice della carta)?");
+        System.out.println(player.getNome() + " quale carta desideri giocare (indicare con un intero l'indice della carta, -1 per non giocare nulla)?");
         player.stampaMano();
         System.out.println("");
         int input = 0;
@@ -57,11 +57,13 @@ public class MainPhase implements Phase {
                 if ((input < 1) || (input > player.mano.size() + 1)) {
                     System.out.println("Indice errato");
                 } else {
-                    player.giocaCarta(input);
+                    if(input != -1){
+                        player.giocaCarta(input);
+                    }
                 }
             } catch (IOException ex) {
                 System.out.println("Si è verificato un errore: " + ex);
             }
-        } while ((input > player.mano.size() + 1) || (input < 1));
+        } while ((input > player.mano.size() + 1) || (input < 1) && input != -1);
     }
 }
