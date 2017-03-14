@@ -17,6 +17,8 @@ public class Creature extends Card {
      * Create a new Creature (CREATURA)
      * @param name The Creature name
      * @param description The Creature description
+     * @param attack Creature's attack points
+     * @param defence Creature's defence points
      */
     public Creature(String name, String description, int attack, int defence){
         this.name=name;
