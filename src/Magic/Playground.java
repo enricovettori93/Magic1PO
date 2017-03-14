@@ -122,7 +122,6 @@ public class Playground {
         boolean istantp2 = true;
         if (player.equals(this.player1)) {
             while(istantp1==true && istantp2==true){
-                System.out.print(""+player2.getNome());
                 istantp2=player2.checkIstantToPlay();
                 if(istantp2==true){
                     System.out.print(""+player1.getNome());
@@ -132,7 +131,6 @@ public class Playground {
         } //CONTROLLO SE IL G2 HA ISTANTANEI DA GIOCARE DI RISPOSTA
         else {
             while(istantp1==true && istantp2==true){
-                System.out.print(""+player1.getNome());
                 istantp1=player1.checkIstantToPlay();
                 if(istantp1==true){
                     System.out.print(""+player2.getNome());
