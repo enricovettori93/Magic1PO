@@ -62,7 +62,7 @@ public class Player {
     /**
      * The player monsters
      */
-    private List<Card> monsters = new ArrayList<>();
+    private List<Creature> monsters = new ArrayList<>();
     
     /**
      * The input stream
@@ -135,15 +135,15 @@ public class Player {
         this.magics.addAll(magics);
     }
 
-    public List<Card> getMonsters() {
+    public List<Creature> getMonsters() {
         return monsters;
     }
 
-    public void addMonster(Card monster) {
+    public void addMonster(Creature monster) {
         this.monsters.add(monster);
     }
 
-    public void addMonster(List<Card> monsters) {
+    public void addMonster(List<Creature> monsters) {
         this.monsters.addAll(monsters);
     }
 
@@ -226,7 +226,8 @@ public class Player {
                     try {
                         System.out.print("-> ");
                         carta = Integer.parseInt(myInput.readLine());
-                        carta --;
+                        if(carta != -1)
+                            carta --;
                     } catch (IOException ex) {
                         System.out.println("ahiahiaahi");
                     }
@@ -255,7 +256,7 @@ public class Player {
             playground.checkIstantOtherPlayer(this);
         }
         else{
-            addMonster(mano.get(indice-1));
+            addMonster((Creature)mano.get(indice-1));
             playground.checkIstantOtherPlayer(this);
         }
         //playground.addMostro(mano.get(indice - 1), this);
