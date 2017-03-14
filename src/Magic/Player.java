@@ -279,7 +279,12 @@ public class Player {
         t = new Round(playground, this);
     }
     
-    
+    //PULISCO DAL CAMPO LE MAGIE GIOCATE CHE NON SIANO INCANTESIMI
+    public void cleanMagicsOnGround(){
+        for(int i=0; i<magics.size();i++)
+            if(magics.get(i).getType().equals("Sorcery"))
+                magics.remove(i);
+    }
     public void printPlayerPlayground(){
         
         System.out.print("Sorceries : ");
