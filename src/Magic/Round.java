@@ -19,7 +19,6 @@ public class Round {
      *  1 - UntapPhase
      *  2 - MainPhase
      *  3 - CombatPhase
-     *  4 - EndPhase
      */
     Integer[] counterPhase;
 
@@ -28,8 +27,8 @@ public class Round {
         this.player = player;
         fasi = new ArrayList<>();
         
-        counterPhase= new Integer[5];
-        for(int i = 0; i<5; i++)
+        counterPhase= new Integer[4];
+        for(int i = 0; i<4; i++)
             counterPhase[i]=1;
         
         creaTurno();
@@ -47,7 +46,7 @@ public class Round {
         */
         
         while(!done){
-            for(i=0;i<5;i++){
+            for(i=0;i<4;i++){
                 if(counterPhase[i]!=0){
                     switch(i){
                         case 0 : 
@@ -72,26 +71,24 @@ public class Round {
                                 counterPhase[i]--;
                             }
                             break;
-                        case 4 :
-                            if(player.isInGame()){
-                                fasi.add(new EndPhase(playground, player));
-                                counterPhase[i]--;
-                            }
-                            break;
                     }
                 }                
             }
             done=true;
-            for(i=0;i<5;i++){
+            for(i=0;i<4;i++){
                 if(counterPhase[i]!=0)
                     done = false;
             }
                        
         }
         
+        if(player.isInGame())
+            fasi.add(new EndPhase(playground, player));
+        
+        
         
         if(player.isInGame()){
-            for(i = 0; i<5; i++)
+            for(i = 0; i<4; i++)
                 counterPhase[i]=1;
             
             System.out.println("\n");
@@ -101,5 +98,34 @@ public class Round {
                 fasi.get(i).initPhase();
             }
         }
+    }
+    
+    /* metodi per aggiungere o rimuovere fasi al turno*/
+    public void addDrawPhase(){
+        counterPhase[0]++;
+    }
+    public void removeDrawPhase(){
+        counterPhase[0]--;
+    }
+    
+    public void addUntapPhase(){
+        counterPhase[1]++;
+    }
+    public void removeUntapPhase(){
+        counterPhase[1]--;
+    }
+    
+    public void addMainPhase(){
+        counterPhase[2]++;
+    }
+    public void removeMainPhase(){
+        counterPhase[2]--;
+    }
+    
+    public void addCombatPhase(){
+        counterPhase[3]++;
+    }
+    public void removeCombatPhase(){
+        counterPhase[3]--;
     }
 }
