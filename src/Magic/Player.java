@@ -213,7 +213,7 @@ public class Player {
         boolean iveIstant = false;
         int i;
         for(i=0;i<mano.size();i++){
-            if("Istant".equals(mano.get(i).getType())){
+            if("Instant".equals(mano.get(i).getType())){
                 iveIstant=true;
             }
         }
@@ -237,15 +237,16 @@ public class Player {
                     }
                 }while(carta<0 || carta>mano.size());
                 app=mano.get(carta);
-                if("Istant".equals(app.getType())){
+                if("Instant".equals(app.getType())){
                     playground.addStack(app,this);
+                    magics.add(app);
                     mano.remove(carta);
                     return true;
                 }
                 else{
                     System.out.println("Tipologia di carta non valida");
                 }
-            }while((!"Istant".equals(app.getType())));
+            }while((!"Instant".equals(app.getType())));
             return false;
         }
         else{
@@ -254,9 +255,9 @@ public class Player {
     }
     
     public void giocaCarta(int indice) {
-        if("Istant".equals(mano.get(indice-1).getType()) || "Enchantment".equals(mano.get(indice-1).getType())  || "Sourcery".equals(mano.get(indice-1).getType())){
-            if(!"Istant".equals(mano.get(indice-1).getType()))
-                addMagic(mano.get(indice-1));
+        if("Instant".equals(mano.get(indice-1).getType()) || "Enchantment".equals(mano.get(indice-1).getType())  || "Sourcery".equals(mano.get(indice-1).getType())){
+            //if(!"Istant".equals(mano.get(indice-1).getType()))
+            addMagic(mano.get(indice-1));
             playground.addStack(mano.get(indice-1),this);
             mano.remove(indice-1);
             playground.checkIstantOtherPlayer(this);
@@ -296,6 +297,11 @@ public class Player {
             if(getMagics().get(i).getType().equals("Enchantment"))
                 System.out.print(getMagics().get(i).getName() + " ");
         System.out.println("\n");
+        System.out.print("Instants : ");
+        for(int i=0; i<getMagics().size();i++)
+            if(getMagics().get(i).getType().equals("Instant"))
+                System.out.print(getMagics().get(i).getName() + " ");
+        System.out.println("\n");
         System.out.print("Creatures : ");
         for(int i=0; i<getMonsters().size();i++){
             if(getMonsters().get(i).getTapped()){
@@ -306,5 +312,11 @@ public class Player {
             }
         }
         System.out.println("\n");
+    }
+    
+    public void resetMonsterHandler(){
+        for(int i=0;i<monsters.size();i++){
+            monsters.get(i).resetHandler();
+        }
     }
 }
