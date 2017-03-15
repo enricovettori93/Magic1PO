@@ -26,7 +26,7 @@ public class Creature extends Card {
         this.type="Creature";
         this.attack=attack;
         this.defence=defence;
-        tapped=true;
+        tapped=false;
     }
     
     public boolean getTapped(){
