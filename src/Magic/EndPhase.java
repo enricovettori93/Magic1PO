@@ -49,6 +49,7 @@ public class EndPhase implements Phase {
         for(int i=0;i<player.getMagics().size();i++){
             if(!"Sourcery".equals(player.getMagics().get(i).getType())){
                 player.getMagics().get(i).removeCard();
+                player.getMagics().remove(i);
             }
         }
         reader = new InputStreamReader(System.in);
