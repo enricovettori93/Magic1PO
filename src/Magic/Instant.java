@@ -20,4 +20,9 @@ public class Instant extends Card{
     public void execute(){
         System.out.println("Im an Instant!");
     }
+    
+    @Override
+    public void removeCard(){
+        System.out.println("Rimuovo l'effetto della carta");
+    }
 }
