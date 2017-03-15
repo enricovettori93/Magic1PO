@@ -182,24 +182,24 @@ public class Playground {
     public void printPlayground(Player caller){
         if(caller.equals(player1)){
             System.out.println("===================================================================================");
-            System.out.println("Carte in gioco di "+player1.getNome());
+            System.out.println("Carte in gioco di "+player2.getNome());
             System.out.println("===================================================================================");
             player2.printPlayerPlayground();
             System.out.println("===================================================================================");
             player1.printPlayerPlayground();
             System.out.println("===================================================================================");
-            System.out.println("Carte in gioco di "+player2.getNome());
+            System.out.println("Carte in gioco di "+player1.getNome());
             System.out.println("===================================================================================");
         }
         else{
             System.out.println("===================================================================================");
-            System.out.println("Carte in gioco di "+player2.getNome());
+            System.out.println("Carte in gioco di "+player1.getNome());
             System.out.println("===================================================================================");
             player1.printPlayerPlayground();
             System.out.println("===================================================================================");
             player2.printPlayerPlayground();
             System.out.println("===================================================================================");
-            System.out.println("Carte in gioco di "+player1.getNome());
+            System.out.println("Carte in gioco di "+player2.getNome());
             System.out.println("===================================================================================");
         }
     }
