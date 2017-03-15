@@ -65,5 +65,7 @@ public class MainPhase implements Phase {
                 System.out.println("Si è verificato un errore: " + ex);
             }
         } while ((input > player.mano.size() + 1) || (input < 1) && input != -1);
+        System.out.println("\n");
+        playground.printPlayground(player);
     }
 }
