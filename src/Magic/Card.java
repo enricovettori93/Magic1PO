@@ -4,7 +4,7 @@ package Magic;
  * Rappresents a card
  * @author Enrico
  */
-public abstract class Card {
+public abstract class Card implements InterfaceCard {
     /** The card name */
     String name;
     /** The card description */
@@ -64,5 +64,5 @@ public abstract class Card {
      * The <i>specific</i> effect of the card. 
      * Each card that extends this class must provide its own implementation.
      */
-    public abstract void execute();
+    //public abstract void execute();
 }
