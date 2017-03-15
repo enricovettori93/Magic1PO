@@ -91,9 +91,6 @@ public class Round {
             for(i = 0; i<4; i++)
                 counterPhase[i]=1;
             
-            System.out.println("\n");
-            playground.printPlayground(player);
-            
             for (i = 0; i < fasi.size(); i++) {
                 fasi.get(i).initPhase();
             }
