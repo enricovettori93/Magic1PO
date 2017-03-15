@@ -286,7 +286,6 @@ public class Player {
                 magics.remove(i);
     }
     public void printPlayerPlayground(){
-        
         System.out.print("Sorceries : ");
         for(int i=0; i<getMagics().size();i++)
             if(getMagics().get(i).getType().equals("Sorcery"))
@@ -298,8 +297,14 @@ public class Player {
                 System.out.print(getMagics().get(i).getName() + " ");
         System.out.println("\n");
         System.out.print("Creatures : ");
-        for(int i=0; i<getMonsters().size();i++)
-            System.out.print(getMonsters().get(i).getName() + " ");
+        for(int i=0; i<getMonsters().size();i++){
+            if(getMonsters().get(i).getTapped()){
+                System.out.print(getMonsters().get(i).getName() + " - T ");
+            }
+            else{
+                System.out.print(getMonsters().get(i).getName() + " - U ");
+            }
+        }
         System.out.println("\n");
     }
 }
