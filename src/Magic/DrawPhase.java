@@ -46,6 +46,17 @@ public class DrawPhase implements Phase {
 
     @Override
     public void initPhase() {
+        //VADO A RIAPPLICARE GLI EFFETTI DELLE MAGIE DI ENTRAMBI I PLAYER
+        /*
+        player.cleanMagicsOnGround();
+        player.resetMonsterHandler();
+        for(int i=0;i<playground.player1.getMagics().size();i++){
+            playground.player1.getMagics().get(i).execute();
+        }
+        for(int i=0;i<playground.player2.getMagics().size();i++){
+            playground.player2.getMagics().get(i).execute();
+        }
+        */
         System.out.println("\nInizio del turno di " + player.getNome() + ". Draw Phase.");
         System.out.println("\n");
         playground.printPlayground(player);
