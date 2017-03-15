@@ -239,7 +239,7 @@ public class Player {
                 app=mano.get(carta);
                 if("Instant".equals(app.getType())){
                     playground.addStack(app,this);
-                    magics.add(app);
+                    //magics.add(app);
                     mano.remove(carta);
                     return true;
                 }
