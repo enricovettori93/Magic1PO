@@ -11,4 +11,5 @@ package Magic;
  */
 public interface InterfaceCard {
     public abstract void execute();
+    public abstract void removeCard();
 }
