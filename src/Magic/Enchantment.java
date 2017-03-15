@@ -19,6 +19,11 @@ public class Enchantment extends Card {
     
     @Override
     public void execute(){
-        
+        System.out.println("Eseguo l'effetto della carta");
+    }
+    
+    @Override
+    public void removeCard(){
+        System.out.println("Rimuovo l'effetto della carta");
     }
 }
