@@ -12,6 +12,7 @@ public class Creature extends Card {
     private boolean tapped;
     private int attack;
     private int defence;
+    private AttackDefenceHandler handlerAD;
     
     /**
      * Create a new Creature (CREATURA)
@@ -27,6 +28,7 @@ public class Creature extends Card {
         this.attack=attack;
         this.defence=defence;
         tapped=false;
+        handlerAD = new AttackDefenceHandler(this.attack, this.defence);
     }
     
     public boolean getTapped(){
@@ -42,7 +44,7 @@ public class Creature extends Card {
     }
     
     public int getAttack(){
-        return attack;
+        return handlerAD.getAttack();
     }
     
     public void setDefence(int defence){
@@ -50,24 +52,32 @@ public class Creature extends Card {
     }
     
     public int getDefence(){
-        return defence;
+        return handlerAD.getDefence();
+    }
+    
+    public void resetHandler(){
+        handlerAD.resetHandler(this.attack, this.defence);
     }
     
     public void modifyDefence(int quantity){
-        this.defence = this.defence - quantity;
+        handlerAD.modifyDefence(quantity);
     }
     
     public void modifyAttack(int quantity){
-        this.attack = this.attack - quantity;
+        handlerAD.modifyAttack(quantity);
     }
     
-    public void modifyAttackDefence(int quantity){
-        this.defence = this.defence - quantity;
-        this.attack = this.attack - quantity;
+    public void modifyAttackDefence(int quantityAtk, int quantityDef){
+        handlerAD.modifyAttackDefence(quantityAtk,quantityDef);
     }
     
     @Override
     public void execute(){
         System.out.println("Eseguo l'effetto della creatura");
+    }
+    
+    @Override
+    public void removeCard(){
+        System.out.println("Rimuovo l'effetto della carta");
     }
 }
