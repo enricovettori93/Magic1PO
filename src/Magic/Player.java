@@ -270,7 +270,7 @@ public class Player {
     // </editor-fold>
     
     public void tapMonster(int index){
-        monsters.get(index-1).setTapped(true);
+        monsters.get(index).setTapped(true);
     }
     /**
      * Initalize a new round
