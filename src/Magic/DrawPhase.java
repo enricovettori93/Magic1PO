@@ -76,9 +76,9 @@ public class DrawPhase implements Phase {
      * let him choose which reject
      */
     private void checkHand() {
-        System.out.println(player.getNome() + " hai troppe carte in mano, quali vuoi scartare (indicare con un intero l'indice della carta da rimuovere)?");
-        player.stampaMano();
         while (player.mano.size() > 7) {
+            System.out.println(player.getNome() + " hai troppe carte in mano, quali vuoi scartare (indicare con un intero l'indice della carta da rimuovere)?");
+            player.stampaMano();
             System.out.println("");
             int input = 0;
             do {
