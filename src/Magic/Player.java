@@ -192,7 +192,7 @@ public class Player {
     // <editor-fold defaultstate="collapsed" desc="Hand handlers">
     protected void creaMano() {
         //MANO DI 1 ELEMENTO PER DEBUG
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
             mano.add(mazzo.get(mazzo.size()-1));
             mazzo.remove(mazzo.size()-1);
         }
