@@ -46,6 +46,7 @@ public class MainPhase implements Phase {
 
     @Override
     public void initPhase() {
+        System.out.println("Sono nella Main Phase");
         System.out.println(player.getNome() + " quale carta desideri giocare (indicare con un intero l'indice della carta, -1 per non giocare nulla)?");
         player.stampaMano();
         System.out.println("");
