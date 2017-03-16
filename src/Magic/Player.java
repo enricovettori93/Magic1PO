@@ -152,6 +152,7 @@ public class Player {
         System.out.println("2 - Gemin (mostro)");
         do{
             do{
+                throwedexc=false;
                 try {
                     try{
                         System.out.print((i+1)+" di 20 : ");
@@ -164,8 +165,7 @@ public class Player {
                 } catch (IOException ex) {
                     System.out.println("Errore " + ex);
                 }
-            }while(carta != 1 && carta != 2 && throwedexc == true);
-            throwedexc=false;
+            }while((carta != 1 || carta != 2) && throwedexc == true);
             i++;
             if(carta==1){
                 mazzo.add(new Instant("Omeophaty","Omeophaty does nothing"));
