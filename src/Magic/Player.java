@@ -73,7 +73,12 @@ public class Player {
      * The buffer reader
      */
     private BufferedReader myInput;
-
+    
+    /**
+     * variable that check if program launch an exception
+     */
+    private boolean throwedexc = false;
+    
     /**
      * Creates a new player
      *
@@ -148,20 +153,26 @@ public class Player {
         do{
             do{
                 try {
-                    System.out.print((i+1)+" di 20 : ");
-                    carta = Integer.parseInt(myInput.readLine());
+                    try{
+                        System.out.print((i+1)+" di 20 : ");
+                        carta = Integer.parseInt(myInput.readLine());
+                    }
+                    catch(NumberFormatException exc){
+                        System.out.println("Input errato.");
+                        throwedexc=true;
+                    }
                 } catch (IOException ex) {
-                    System.out.println("ahiahiaahi");
+                    System.out.println("Errore " + ex);
                 }
-            }while(carta != 1 && carta != 2);
+            }while(carta != 1 && carta != 2 && throwedexc == true);
+            throwedexc=false;
             i++;
             if(carta==1){
                 mazzo.add(new Instant("Omeophaty","Omeophaty does nothing"));
             }else{
                 mazzo.add(new Creature("Gemin","Vortice di gioia",-5,-10));
             }
-        //MAZZO DI 6 CARTE PER DEBUG
-        }while(i<6);
+        }while(i<10);
         Collections.shuffle(mazzo);
     }
 
@@ -191,7 +202,6 @@ public class Player {
 
     // <editor-fold defaultstate="collapsed" desc="Hand handlers">
     protected void creaMano() {
-        //MANO DI 1 ELEMENTO PER DEBUG
         for (int i = 0; i < 5; i++) {
             mano.add(mazzo.get(mazzo.size()-1));
             mazzo.remove(mazzo.size()-1);
@@ -206,7 +216,7 @@ public class Player {
     
     /**
      *Check if the player can and would use istant's card, otherwise don't do nothing
-     * Return true: if the player use an istans, false if don't want to play some istants
+     * Return true if the player use an istans, false if don't want to play some istants
      * @return 
      */
     public boolean checkIstantToPlay(){
@@ -224,18 +234,25 @@ public class Player {
             int carta=0;
             do{
                 do{
+                    throwedexc=false;
                     try {
                         System.out.print("-> ");
-                        carta = Integer.parseInt(myInput.readLine());
-                        if(carta != -1)
+                        try{
+                            carta = Integer.parseInt(myInput.readLine());
+                        }
+                        catch(NumberFormatException exc){
+                            System.out.println("Input errato.");
+                            throwedexc=true;
+                        }
+                        if(carta != -1 && throwedexc == false)
                             carta --;
                     } catch (IOException ex) {
-                        System.out.println("ahiahiaahi");
+                        System.out.println("Errore " + ex);
                     }
                     if(carta==-1){
                         return false;
                     }
-                }while(carta<0 || carta>mano.size());
+                }while(carta<0 || carta>mano.size() || throwedexc == true);
                 app=mano.get(carta);
                 if("Instant".equals(app.getType())){
                     playground.addStack(app,this);

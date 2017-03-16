@@ -30,7 +30,12 @@ public class MainPhase implements Phase {
      * The buffer
      */
     private BufferedReader myInput;
-
+    
+    /**
+     * variable that check if program launch an exception
+     */
+    private boolean throwedexc = false;
+    
     /**
      * Creats a new Main pahse
      *
@@ -53,19 +58,28 @@ public class MainPhase implements Phase {
         int input = 0;
         do {
             try {
+                throwedexc=false;
                 System.out.print("\n-> ");
-                input = Integer.parseInt(myInput.readLine());
-                if ((input < 1) || (input > player.mano.size() + 1)) {
-                    System.out.println("Indice errato");
+                try{
+                    input = Integer.parseInt(myInput.readLine());
+                }
+                catch(NumberFormatException exc){
+                    System.out.println("Input errato.");
+                    throwedexc=true;
+                }
+                if ((((input < 1) || (input > player.mano.size() + 1)) && input != -1) && throwedexc==false) {
+                    System.out.println("Indice errato.");
                 } else {
-                    if(input != -1){
+                    if(input != -1 && throwedexc==false){
+                        System.out.println("gioco la carta");
                         player.giocaCarta(input);
+                        //input = 0; TRUCCO PER FAR RIPETERE IL DO WHILE
                     }
                 }
             } catch (IOException ex) {
                 System.out.println("Si è verificato un errore: " + ex);
             }
-        } while ((input > player.mano.size() + 1) || (input < 1) && input != -1);
+        } while (((input > player.mano.size() + 1) || (input < 1) && input != -1) && throwedexc==true);
         System.out.println("\n");
         playground.printPlayground(player);
     }

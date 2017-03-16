@@ -32,6 +32,11 @@ public class DrawPhase implements Phase {
     private BufferedReader myInput;
 
     /**
+     * variable that check if program launch an exception
+     */
+    private boolean throwedexc = false;
+    
+    /**
      * Initalize the Draw pahse
      *
      * @param playground The playground
@@ -46,17 +51,6 @@ public class DrawPhase implements Phase {
 
     @Override
     public void initPhase() {
-        //VADO A RIAPPLICARE GLI EFFETTI DELLE MAGIE DI ENTRAMBI I PLAYER
-        /*
-        player.cleanMagicsOnGround();
-        player.resetMonsterHandler();
-        for(int i=0;i<playground.player1.getMagics().size();i++){
-            playground.player1.getMagics().get(i).execute();
-        }
-        for(int i=0;i<playground.player2.getMagics().size();i++){
-            playground.player2.getMagics().get(i).execute();
-        }
-        */
         System.out.println("\nInizio del turno di " + player.getNome() + ". Draw Phase.");
         System.out.println("\n");
         playground.printPlayground(player);
@@ -82,24 +76,34 @@ public class DrawPhase implements Phase {
      * let him choose which reject
      */
     private void checkHand() {
+        System.out.println(player.getNome() + " hai troppe carte in mano, quali vuoi scartare (indicare con un intero l'indice della carta da rimuovere)?");
+        player.stampaMano();
         while (player.mano.size() > 7) {
-            System.out.println(player.getNome() + " hai troppe carte in mano, quali vuoi scartare (indicare con un intero l'indice della carta da rimuovere)?");
-            player.stampaMano();
             System.out.println("");
             int input = 0;
             do {
+                throwedexc=false;
                 try {
                     System.out.print("\n-> ");
-                    input = Integer.parseInt(myInput.readLine());
-                    if ((input < 1) || (input > player.mano.size() + 1)) {
-                        System.out.println("Indice errato");
-                    } else {
-                        player.mano.remove(input - 1);
+                    try{
+                        input = Integer.parseInt(myInput.readLine());
+                    }
+                    catch(NumberFormatException exc){
+                        throwedexc=true;
+                        System.out.println("Input errato.");
+                    }
+                    //NON SONO STATE GENERATE ECCEZIONI
+                    if(throwedexc == false){
+                        if ((input < 1) || (input > player.mano.size() + 1)) {
+                            System.out.println("Indice errato");
+                        } else {
+                            player.mano.remove(input - 1);
+                        }
                     }
                 } catch (IOException ex) {
                     System.out.println("Si è verificato un errore: " + ex);
                 }
-            } while ((input > player.mano.size() + 1) || (input < 1));
+            } while (((input > player.mano.size() + 1) || (input < 1)) && throwedexc == true);
         }
     }
 }
