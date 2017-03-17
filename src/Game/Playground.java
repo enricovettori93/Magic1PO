@@ -160,7 +160,8 @@ public class Playground {
             app_p = cartaGiocataDa.pop();
             app = effetti.pop();
             //LA AGGIUNGO IN UNA LISTA DI CARTE GIOCATE
-            playedCardStack.add(app);
+            if(effetti.size()>1)
+                playedCardStack.add(app);
             System.out.println("Effetto della carta " + i + " - " + app.getName() + " giocata da " + app_p.getNome());
             app.execute();
             i--;
@@ -177,8 +178,8 @@ public class Playground {
             for(int i = 0; i<playedCardStack.size();i++){
                 playedCardStack.get(i).removeCard();
             }
-            playedCardStack.clear();
         }
+        playedCardStack.clear();
     }
     
     /**
