@@ -120,17 +120,17 @@ public class Round {
         counterPhase[1]--;
     }
     
-    public void addMainPhase(){
+    public void addCombatPhase(){
         counterPhase[2]++;
     }
-    public void removeMainPhase(){
+    public void removeCombatPhase(){
         counterPhase[2]--;
     }
     
-    public void addCombatPhase(){
+    public void addMainPhase(){
         counterPhase[3]++;
     }
-    public void removeCombatPhase(){
+    public void removeMainPhase(){
         counterPhase[3]--;
     }
 }
