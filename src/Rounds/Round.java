@@ -1,4 +1,4 @@
-package Rounds;
+package Magic.Rounds;
 
 import Magic.Game.Player;
 import Magic.Game.Playground;
