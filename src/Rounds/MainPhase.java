@@ -73,7 +73,6 @@ public class MainPhase implements Phase {
                     System.out.println("Indice errato.");
                 } else {
                     if(input != -1 && throwedexc==false){
-                        System.out.println("gioco la carta");
                         player.giocaCarta(input);
                         //input = 0; TRUCCO PER FAR RIPETERE IL DO WHILE
                     }
