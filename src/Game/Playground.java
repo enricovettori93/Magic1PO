@@ -1,12 +1,14 @@
-package Magic;
+package Magic.Game;
 
+import Magic.Cards.Card;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
- * Rappresents the playground. TODO: Must be singleton
+ * Represents the playground. TODO: Must be singleton
  *
  * @author Enrico
  */
@@ -19,14 +21,16 @@ public class Playground {
      * The stack of effects present in the playground
      */
     protected Stack<Card> effetti;
-    protected Stack<Player> cartagiocatada;
+    protected Stack<Player> cartaGiocataDa;
+    protected ArrayList<Card> playedCardStack;
 
     /**
      * Initialize a new playground
      */
     public Playground() {
         effetti = new Stack();
-        cartagiocatada = new Stack();
+        cartaGiocataDa = new Stack();
+        playedCardStack = new ArrayList();
         this.player1 = new Player(this);
         this.player2 = new Player(this);
         inizializza();
@@ -98,7 +102,7 @@ public class Playground {
         int i;
         System.out.println("\nMagie giocatore " + player.getNome());
         for (i = 0; i < player.getMagics().size(); i++) {
-            System.out.print(" " + player.getMagics().get(i).name);
+            System.out.print(" " + player.getMagics().get(i).getName());
         }
         System.out.println("\n");
     }
@@ -108,7 +112,7 @@ public class Playground {
         int i;
         System.out.println("\nMostri giocatore " + player.getNome());
         for (i = 0; i < player.getMonsters().size(); i++) {
-            System.out.print(" " + player.getMonsters().get(i).name);
+            System.out.print(" " + player.getMonsters().get(i).getName());
         }
         System.out.println("\n");
     }
@@ -146,17 +150,25 @@ public class Playground {
         System.out.println("\n\nEseguo gli effetti in ordine LIFO");
         int i;
         for(i=effetti.size()-1;i>=0;i--){
-            System.out.println(i + " - " + effetti.get(i).getName() + " " + effetti.get(i).getType() + " giocata da " + cartagiocatada.get(i).getNome());
+            System.out.println(i + " - " + effetti.get(i).getName() + " " + effetti.get(i).getType() + " giocata da " + cartaGiocataDa.get(i).getNome());
         }
         i=effetti.size()-1;
         while(!effetti.isEmpty()){
             Card app;
             Player app_p;
-            app_p = cartagiocatada.pop();
+            app_p = cartaGiocataDa.pop();
             app = effetti.pop();
+            playedCardStack.add(app);
             System.out.println("Effetto della carta " + i + " - " + app.getName() + " giocata da " + app_p.getNome());
             app.execute();
             i--;
+        }
+    }
+    
+    public void removePlayedCartStack(){
+        for(int i = 0; i<playedCardStack.size();i++){
+            playedCardStack.get(i).removeCard();
+            playedCardStack.remove(i);
         }
     }
     
@@ -168,10 +180,10 @@ public class Playground {
     //DA AGGIUNGERE NELLO STACK QUALE GIOCATORE HA GIOCATO QUESTA CARTA
     public void addStack(Card carta, Player p){
         if(p.equals(player1)){
-            cartagiocatada.push(player1);
+            cartaGiocataDa.push(player1);
         }
         else{
-            cartagiocatada.push(player2);
+            cartaGiocataDa.push(player2);
         }
         effetti.push(carta);
     }

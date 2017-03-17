@@ -1,5 +1,7 @@
-package Magic;
+package Magic.Rounds;
 
+import Magic.Game.Player;
+import Magic.Game.Playground;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -54,7 +56,8 @@ public class EndPhase implements Phase {
         }
         reader = new InputStreamReader(System.in);
         myInput = new BufferedReader(reader);
-        System.out.println("Premere passare al prossimo turno.");
+        playground.removePlayedCartStack();
+        System.out.println("Premere INVIO per passare al prossimo turno.");
         String c;
         try {
             c = myInput.readLine();

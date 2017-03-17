@@ -1,7 +1,7 @@
-package Magic;
+package Magic.Cards;
 
 /**
- * Rappresents a Creature (CREATURA)
+ * Represents a Creature (CREATURA)
  * @author Enrico
  */
 public class Creature extends Card {

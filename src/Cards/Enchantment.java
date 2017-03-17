@@ -1,21 +1,22 @@
-package Magic;
+package Magic.Cards;
 
 /**
- * Rappresnets a Sorcery (STREGONERIA)
+ * Rappresents an Enchantment (INCANTAMENTO)
  * @author Enrico
  */
-public class Sorcery extends Card{
+public class Enchantment extends Card {
     
     /**
-     * Create a new Sorcery (STREGONERIA)
-     * @param name The Sorcery name
-     * @param description The Sorcery description
+     * Creates a new Enchantment (INCANTAMENTO)
+     * @param name The Enchantment name
+     * @param description The Enchantment description
      */
-    public Sorcery(String name, String description){
+    public Enchantment(String name, String description){
         this.name=name;
         this.description=description;
-        this.type="Sourcery";
+        this.type="Enchantment";
     }
+    
     @Override
     public void execute(){
         System.out.println("Eseguo l'effetto della carta");

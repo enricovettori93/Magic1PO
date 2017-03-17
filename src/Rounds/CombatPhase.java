@@ -1,4 +1,7 @@
-package Magic;
+package Magic.Rounds;
+
+import Magic.Game.Player;
+import Magic.Game.Playground;
 
 /**
  * Rappresents the combat phase

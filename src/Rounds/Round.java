@@ -1,5 +1,7 @@
-package Magic;
+package Magic.Rounds;
 
+import Magic.Game.Player;
+import Magic.Game.Playground;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,13 +63,13 @@ public class Round {
                             break;
                         case 2 :
                             if(player.isInGame()){
-                                fasi.add(new MainPhase(playground, player));
+                                fasi.add(new CombatPhase(playground, player));
                                 counterPhase[i]--;
                             }
                             break;
                         case 3 :
                             if(player.isInGame()){
-                                fasi.add(new CombatPhase(playground, player));
+                                fasi.add(new MainPhase(playground, player));
                                 counterPhase[i]--;
                             }
                             break;

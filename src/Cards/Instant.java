@@ -1,4 +1,4 @@
-package Magic;
+package Magic.Cards;
 
 /**
  * Rappresents an Instant (ISTANTANEO)

@@ -1,4 +1,4 @@
-package Magic;
+package Magic.Game;
 /**
  *
  * @author Enrico

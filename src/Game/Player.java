@@ -1,5 +1,9 @@
-package Magic;
+package Magic.Game;
 
+import Magic.Rounds.Round;
+import Magic.Cards.Instant;
+import Magic.Cards.Card;
+import Magic.Cards.Creature;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -140,6 +144,9 @@ public class Player {
         this.monsters.addAll(monsters);
     }
     
+    public List<Card> getMano(){
+        return mano;
+    }
     
     // </editor-fold>
     
@@ -165,7 +172,7 @@ public class Player {
                 } catch (IOException ex) {
                     System.out.println("Errore " + ex);
                 }
-            }while((carta != 1 || carta != 2) && throwedexc == true);
+            }while((carta != 1 && carta != 2) || throwedexc == true);
             i++;
             if(carta==1){
                 mazzo.add(new Instant("Omeophaty","Omeophaty does nothing"));

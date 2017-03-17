@@ -1,11 +1,13 @@
-package Magic;
+package Magic.Rounds;
 
+import Magic.Game.Player;
+import Magic.Game.Playground;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Rappresents the main phase
+ * Represents the main phase
  *
  * @author Enrico
  */
@@ -67,7 +69,7 @@ public class MainPhase implements Phase {
                     System.out.println("Input errato.");
                     throwedexc=true;
                 }
-                if ((((input < 1) || (input > player.mano.size() + 1)) && input != -1) && throwedexc==false) {
+                if ((((input < 1) || (input > player.getMano().size() + 1)) && input != -1) && throwedexc==false) {
                     System.out.println("Indice errato.");
                 } else {
                     if(input != -1 && throwedexc==false){
@@ -79,7 +81,7 @@ public class MainPhase implements Phase {
             } catch (IOException ex) {
                 System.out.println("Si è verificato un errore: " + ex);
             }
-        } while (((input > player.mano.size() + 1) || (input < 1) && input != -1) && throwedexc==true);
+        } while (((input > player.getMano().size() + 1) || (input < 1) && input != -1) && throwedexc==true);
         System.out.println("\n");
         playground.printPlayground(player);
     }

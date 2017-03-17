@@ -1,4 +1,4 @@
-package Magic;
+package Magic.Rounds;
 
 /**
  * Rappresents a player round phase

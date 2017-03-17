@@ -1,5 +1,7 @@
-package Magic;
+package Magic.Rounds;
 
+import Magic.Game.Player;
+import Magic.Game.Playground;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

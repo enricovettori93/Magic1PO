@@ -1,5 +1,7 @@
-package Magic;
+package Magic.Rounds;
 
+import Magic.Game.Player;
+import Magic.Game.Playground;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -76,7 +78,7 @@ public class DrawPhase implements Phase {
      * let him choose which reject
      */
     private void checkHand() {
-        while (player.mano.size() > 7) {
+        while (player.getMano().size() > 7) {
             System.out.println(player.getNome() + " hai troppe carte in mano, quali vuoi scartare (indicare con un intero l'indice della carta da rimuovere)?");
             player.stampaMano();
             System.out.println("");
@@ -94,16 +96,16 @@ public class DrawPhase implements Phase {
                     }
                     //NON SONO STATE GENERATE ECCEZIONI
                     if(throwedexc == false){
-                        if ((input < 1) || (input > player.mano.size() + 1)) {
+                        if ((input < 1) || (input > player.getMano().size() + 1)) {
                             System.out.println("Indice errato");
                         } else {
-                            player.mano.remove(input - 1);
+                            player.getMano().remove(input - 1);
                         }
                     }
                 } catch (IOException ex) {
                     System.out.println("Si è verificato un errore: " + ex);
                 }
-            } while (((input > player.mano.size() + 1) || (input < 1)) && throwedexc == true);
+            } while (((input > player.getMano().size() + 1) || (input < 1)) && throwedexc == true);
         }
     }
 }

@@ -1,7 +1,7 @@
-package Magic;
+package Magic.Cards;
 
 /**
- * Rappresents a card
+ * Represents a card
  * @author Enrico
  */
 public abstract class Card implements InterfaceCard {
@@ -64,5 +64,6 @@ public abstract class Card implements InterfaceCard {
      * The <i>specific</i> effect of the card. 
      * Each card that extends this class must provide its own implementation.
      */
+    
     //public abstract void execute();
 }
