@@ -74,7 +74,6 @@ public class MainPhase implements Phase {
                 } else {
                     if(input != -1 && throwedexc==false){
                         player.giocaCarta(input);
-                        //input = 0; TRUCCO PER FAR RIPETERE IL DO WHILE
                     }
                 }
             } catch (IOException ex) {
