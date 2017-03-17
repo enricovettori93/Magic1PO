@@ -156,8 +156,10 @@ public class Playground {
         while(!effetti.isEmpty()){
             Card app;
             Player app_p;
+            //PRENDO LA CARTA GIOCATA DAL TOP DELLO STACK
             app_p = cartaGiocataDa.pop();
             app = effetti.pop();
+            //LA AGGIUNGO IN UNA LISTA DI CARTE GIOCATE
             playedCardStack.add(app);
             System.out.println("Effetto della carta " + i + " - " + app.getName() + " giocata da " + app_p.getNome());
             app.execute();
@@ -165,10 +167,17 @@ public class Playground {
         }
     }
     
-    public void removePlayedCartStack(){
-        for(int i = 0; i<playedCardStack.size();i++){
-            playedCardStack.get(i).removeCard();
-            playedCardStack.remove(i);
+    public ArrayList getPlayedCardStack(){
+        return playedCardStack;
+    }
+    
+    //RIMUOVO GLI EFFETTI DELLE CARTE GIOCATE NELLO STACK A FINE TURNO
+    public void removePlayedCardStack(){
+        if(playedCardStack.size()>1){
+            for(int i = 0; i<playedCardStack.size();i++){
+                playedCardStack.get(i).removeCard();
+            }
+            playedCardStack.clear();
         }
     }
     
