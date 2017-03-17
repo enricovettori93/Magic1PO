@@ -174,7 +174,6 @@ public class Playground {
     
     //RIMUOVO GLI EFFETTI DELLE CARTE GIOCATE NELLO STACK A FINE TURNO
     public void removePlayedCardStack(){
-        System.out.println("Lunghezza lista "+playedCardStack.size());
         for(int i=0; i<playedCardStack.size();i++){
             playedCardStack.get(i).removeCard();
         }
