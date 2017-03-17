@@ -1,7 +1,13 @@
-package Magic.Rounds;
+package Rounds;
 
 import Magic.Game.Player;
 import Magic.Game.Playground;
+import Magic.Rounds.CombatPhase;
+import Magic.Rounds.DrawPhase;
+import Magic.Rounds.EndPhase;
+import Magic.Rounds.MainPhase;
+import Magic.Rounds.Phase;
+import Magic.Rounds.UntapPhase;
 import java.util.ArrayList;
 import java.util.List;
 
