@@ -46,17 +46,19 @@ public class EndPhase implements Phase {
 
     @Override
     public void initPhase() {
-        System.out.println("Sono nella End phase");
+        System.out.println("Sono nella End phase.");
+        //RIMUOVO LE CARTE GIOCATE NELLO STACK COSI DA ANNULLARE GLI EFFETTI
+        playground.removePlayedCardStack();
         //CONTROLLO LE MAGIE PRESENTI IN CAMPO E RIMUOVO TUTTI GLI EFFETTI TRANNE LE STREGONERIE
         for(int i=0;i<player.getMagics().size();i++){
             if(!"Sourcery".equals(player.getMagics().get(i).getType())){
-                player.getMagics().get(i).removeCard();
+                if(!"Istant".equals(player.getMagics().get(i).getType()))
+                    player.getMagics().get(i).removeCard();
                 player.getMagics().remove(i);
             }
         }
         reader = new InputStreamReader(System.in);
         myInput = new BufferedReader(reader);
-        playground.removePlayedCartStack();
         System.out.println("Premere INVIO per passare al prossimo turno.");
         String c;
         try {
