@@ -100,7 +100,8 @@ public class Round {
                 counterPhase[i]=1;
             
             for (i = 0; i < fasi.size(); i++) {
-                fasi.get(i).initPhase();
+                if(player.isInGame())
+                    fasi.get(i).initPhase();
             }
         }
     }
