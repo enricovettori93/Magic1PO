@@ -270,7 +270,6 @@ public class Player {
     
     public void giocaCarta(int indice) {
         if("Instant".equals(mano.get(indice-1).getType()) || "Enchantment".equals(mano.get(indice-1).getType())  || "Sourcery".equals(mano.get(indice-1).getType())){
-            //if(!"Istant".equals(mano.get(indice-1).getType()))
             addMagic(mano.get(indice-1));
             playground.addStack(mano.get(indice-1),this);
             mano.remove(indice-1);
