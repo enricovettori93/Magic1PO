@@ -79,7 +79,7 @@ public class MainPhase implements Phase {
             } catch (IOException ex) {
                 System.out.println("Si è verificato un errore: " + ex);
             }
-        } while (((input > player.getMano().size() + 1) || (input < 1) && input != -1) && throwedexc==true);
+        } while (((input > player.getMano().size() + 1) || (input < 1) && input != -1) || throwedexc==true);
         System.out.println("\n");
         playground.printPlayground(player);
     }
