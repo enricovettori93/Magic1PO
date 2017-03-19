@@ -7,35 +7,32 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Rappresents the untap phase
+ * Represents untap phase
  *
  * @author Enrico
  */
 public class UntapPhase implements Phase {
 
-    /**
-     * The injected playground. TODO: inject the istance
-     */
     private Playground playground;
 
     /**
-     * The player
+     * Player
      */
     private Player player;
 
     /**
-     * The input stream
+     * Input stream
      */
     private InputStreamReader reader;
     
     /**
-     * The buffer reader
+     * Buffer's reader
      */
     private BufferedReader myInput;
 
     /**
      * Inits the UntapPhase
-     * @param playground The injected palyground
+     * @param playground The playground
      * @param player The player
      */
     public UntapPhase(Playground playground, Player player) {
@@ -48,8 +45,9 @@ public class UntapPhase implements Phase {
     @Override
     public void initPhase() {
         System.out.println("Sono nella untap phase");
-        //DEVO ACCEDERE ALLE LISTE DI MOSTRI IN CAMPO PER POTER SCEGLIERE QUALI TAPPARE/NON TAPPARE
-        //SONO NEL GIOCATORE 1
+        // I access to the lists of the monsters in the playground to choose which monster is indicated 
+        // as tapped or untapped.
+        // Player1
         if (this.player.equals(this.playground.player1)) {
             this.handlePlayer(playground.player1);
         } else {
@@ -59,7 +57,7 @@ public class UntapPhase implements Phase {
     }
 
     /**
-     * Handle the untap phase for a player
+     * The method handlePlayer(Player player) handles the untap phase for a player
      *
      * @param player The player
      */

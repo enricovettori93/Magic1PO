@@ -2,17 +2,11 @@ package Magic.Rounds;
 
 import Magic.Game.Player;
 import Magic.Game.Playground;
-import Magic.Rounds.CombatPhase;
-import Magic.Rounds.DrawPhase;
-import Magic.Rounds.EndPhase;
-import Magic.Rounds.MainPhase;
-import Magic.Rounds.Phase;
-import Magic.Rounds.UntapPhase;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Rappresents a Round
+ * Represents a Round
  *
  * @author Enrico
  */
@@ -21,8 +15,8 @@ public class Round {
     private Playground playground;
     private Player player;
     List<Phase> fasi;
-    /* counterPhase è un vettore che tiene conto di quante volte deve essere presente nel turno una determinata fase
-     * codifica: 
+    /* counterPhase is an array that counts how many times a phase must be present during the turn.
+     * codification: 
      *  0 - DrawPhase
      *  1 - UntapPhase
      *  2 - MainPhase
@@ -44,14 +38,11 @@ public class Round {
 
     private void creaTurno() {
         int i;
-        /* done è true se il vettore counterPhase è stato svuotato interamente*/
+        //done is true if the array counterPhase is completely empty
         boolean done = false;
-        /*
-        Eventuali effetti che possono modificare il numero di fasi in un turno
-        vengono gestiti dal metodo execute() della carta che va a modificare
-        il vettore counterPhase modificando l'elemento presente all'indice 
-        corrispondente alla fase
-        */
+        //Possible effects that can change the number of phases in a turn are managed 
+        //by the method execute() of the card. This method changes the array
+        //counterPhase, then it changes the element present to the index of the phase
         
         while(!done){
             for(i=0;i<4;i++){
@@ -106,7 +97,7 @@ public class Round {
         }
     }
     
-    /* metodi per aggiungere o rimuovere fasi al turno*/
+    /*Methods to add or remove phases in a turn*/
     public void addDrawPhase(){
         counterPhase[0]++;
     }

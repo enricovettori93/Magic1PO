@@ -1,12 +1,12 @@
 package Magic.Rounds;
 
 /**
- * Rappresents a player round phase
+ * Represents player's round phase
  * @author Enrico
  */
 public interface Phase {
     /**
-     * The method that initialize the phase
+     * The method initPhase() initializes the phase
      */
     public void initPhase();
 }

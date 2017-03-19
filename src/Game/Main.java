@@ -6,6 +6,6 @@ package Magic.Game;
 public class Main {
     
     public static void main(String [] args){
-        new Playground();
+        Playground playground = new Playground();
     }
 }

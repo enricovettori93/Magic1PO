@@ -5,36 +5,34 @@ import Magic.Game.Playground;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * Rappresnets the end phase
+ * Represents the end phase
  *
  * @author Enrico
  */
 public class EndPhase implements Phase {
     /**
-     * The input stream
+     * Input stream
      */
     private InputStreamReader reader;
     
     /**
-     * The buffer reader
+     * Buffer's reader
      */
     private BufferedReader myInput;
     /**
-     * The playground
+     * Playground
      */
     private Playground playground;
 
     /**
-     * The player
+     * Player
      */
     private Player player;
 
     /**
-     * Initalize the end phase
+     * Initialize end phase
      *
      * @param playground The playground
      * @param player The player
@@ -47,9 +45,9 @@ public class EndPhase implements Phase {
     @Override
     public void initPhase() {
         System.out.println("Sono nella End phase.");
-        //RIMUOVO LE CARTE GIOCATE NELLO STACK COSI DA ANNULLARE GLI EFFETTI
+        //I remove the cards that have been played to the stack to cancel the effects
         playground.removePlayedCardStack();
-        //CONTROLLO LE MAGIE PRESENTI IN CAMPO E RIMUOVO TUTTI GLI EFFETTI TRANNE LE STREGONERIE
+        //I control magic cards present in the playground and I remove all effects except sorcery
         for(int i=0;i<player.getMagics().size();i++){
             if(!"Sourcery".equals(player.getMagics().get(i).getType())){
                 //if(!"Istant".equals(player.getMagics().get(i).getType()))

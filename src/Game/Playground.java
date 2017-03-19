@@ -38,13 +38,13 @@ public class Playground {
     }
 
     /**
-     * Inits the players round
+     * The method gioco inits rounds of the players
      */
     private void gioco() {
         while (player1.isInGame() && player2.isInGame()) {
-            player1.initTurno();
+            player1.initRound();
             if (player1.isInGame())
-                player2.initTurno();
+                player2.initRound();
         }
         if (player1.isInGame()) {
             System.out.println("Bravo " + player1.getNome() + " hai vinto!");
@@ -54,12 +54,12 @@ public class Playground {
     }
 
     /**
-     * Inits players
+     * The method Inizializza inits players
      */
     private void inizializza() {
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader myInput = new BufferedReader(reader);
-        //Creo i giocatori
+        //I create players
         System.out.print("Giocatore 1, inserisci il tuo nome: ");
         do {
             try {
@@ -77,13 +77,13 @@ public class Playground {
             }
         } while (player2.getNome().equals(""));
         
-        //crea mazzo e mano
+        //Create decks and hands of the players
         player1.creaMazzo();
         player1.creaMano();
         player2.creaMazzo();
         player2.creaMano();
         
-        //Visualizzo i mazzi e le mani dei giocatori
+        //Print decks and the hands of the players
         System.out.println("\nMazzo di " + player1.getNome());
         player1.stampaMazzo();
         System.out.println("\nMano di " + player1.getNome());
@@ -118,10 +118,10 @@ public class Playground {
     }
 
     /*
-    Player player: giocatore che esegue la prima carta dello stack
+    Player player: player that plays the first card in the stack
      */
     public void checkIstantOtherPlayer(Player player) {
-        //CONTROLLO SE IL G1 HA ISTANTANEI DA GIOCARE DI RISPOSTA
+        //I check if player1 has istant card to play as a response
         boolean istantp1 = true;
         boolean istantp2 = true;
         if (player.equals(this.player1)) {
@@ -131,7 +131,7 @@ public class Playground {
                     istantp1=player1.checkIstantToPlay();
                 }
             }
-        } //CONTROLLO SE IL G2 HA ISTANTANEI DA GIOCARE DI RISPOSTA
+        } //I check if player2 has instant card to play as a response
         else {
             while(istantp1==true && istantp2==true){
                 istantp1=player1.checkIstantToPlay();
@@ -156,10 +156,11 @@ public class Playground {
         while(!effetti.isEmpty()){
             Card app;
             Player app_p;
-            //PRENDO LA CARTA GIOCATA DAL TOP DELLO STACK
+            //I take the card that has been played from the top of the stack
             app_p = cartaGiocataDa.pop();
             app = effetti.pop();
-            //AGGIUNGO LA CARTA DAL TOP DELLO STACK IN UNA LISTA DI CARTE GIOCATE, QUESTA POI VERRA' RIMOSSA A FINE TURNO PER RIMUOVERE TUTTI GLI EFFETTI APPLICATI
+            //I add the card from the top of the stack in a list of card that have been played.
+            //This list will be removed at the end of the turn to cancel all applied effects
             if(effetti.size()>=1)
                 playedCardStack.add(app);
             System.out.println("Effetto della carta " + i + " - " + app.getName() + " giocata da " + app_p.getNome());
@@ -171,21 +172,21 @@ public class Playground {
     public ArrayList getPlayedCardStack(){
         return playedCardStack;
     }
-    
-    //RIMUOVO GLI EFFETTI DELLE CARTE GIOCATE NELLO STACK A FINE TURNO
+    /**
+     * The method removePlayedCardStack removes card's effects that have been played
+     */
     public void removePlayedCardStack(){
         for(int i=0; i<playedCardStack.size();i++){
             playedCardStack.get(i).removeCard();
         }
         playedCardStack.clear();
     }
-    
-    /**
-     * Add a card into stack
+
+        /**
+     * The method addStack adds to the stack who played that card
      * @param carta: played card
      * @param p: player who play the card
      */
-    //DA AGGIUNGERE NELLO STACK QUALE GIOCATORE HA GIOCATO QUESTA CARTA
     public void addStack(Card carta, Player p){
         if(p.equals(player1)){
             cartaGiocataDa.push(player1);

@@ -7,39 +7,39 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Rappresnets the draw phase
+ * Represents draw phase
  *
  * @author Enrico
  */
 public class DrawPhase implements Phase {
 
     /**
-     * The playground
+     * Playground
      */
     private Playground playground;
 
     /**
-     * The player
+     * Player
      */
     private Player player;
 
     /**
-     * The input stream
+     * Input stream
      */
     private InputStreamReader reader;
 
     /**
-     * The buffer
+     * Buffer
      */
     private BufferedReader myInput;
 
     /**
-     * variable that check if program launch an exception
+     * Variable that checkes if program launch an exception
      */
     private boolean throwedexc = false;
     
     /**
-     * Initalize the Draw pahse
+     * Initialize Draw pahse
      *
      * @param playground The playground
      * @param player The player
@@ -64,8 +64,8 @@ public class DrawPhase implements Phase {
     }
 
     /**
-     * Checks if the player has or not left cards in deck. If no cards are left,
-     * the player is setted as no more in game.
+     * The method checkEmptyDeck checks if deck is empty. If deck is empty,
+     * the player is setted as not in game.
      */
     private void checkEmptyDeck() {
         if (player.carteMazzo() == 0) {
@@ -74,8 +74,8 @@ public class DrawPhase implements Phase {
     }
 
     /**
-     * Chacks if the player has the right number of max cards in hand. If not,
-     * let him choose which reject
+     * The method checkHand checks if player has the correct number of cards in his hand, 
+     * otherwise the player must discard a card.
      */
     private void checkHand() {
         while (player.getMano().size() > 7) {
@@ -94,7 +94,7 @@ public class DrawPhase implements Phase {
                         throwedexc=true;
                         System.out.println("Input errato.");
                     }
-                    //NON SONO STATE GENERATE ECCEZIONI
+                    //No exceptions generated
                     if(throwedexc == false){
                         if ((input < 1) || (input > player.getMano().size() + 1)) {
                             System.out.println("Indice errato");

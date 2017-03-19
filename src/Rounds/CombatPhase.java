@@ -4,22 +4,22 @@ import Magic.Game.Player;
 import Magic.Game.Playground;
 
 /**
- * Rappresents the combat phase
+ * Represents combat phase
  * @author Enrico
  */
 public class CombatPhase implements Phase {
     /**
-     * Th eplayground
+     * Playground
      */
     private Playground playground;
     
     /**
-     * The player
+     * Player
      */
     private Player g;
 
     /**
-     * Inits the combat phase
+     * Inits combat phase
      * @param playground The playground
      * @param player The player
      */

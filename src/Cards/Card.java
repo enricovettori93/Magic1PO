@@ -5,12 +5,12 @@ package Magic.Cards;
  * @author Enrico
  */
 public abstract class Card implements InterfaceCard {
-    /** The card name */
+    /** Card's name */
     String name;
-    /** The card description */
+    /** Card's description */
     String description;
     
-    /**The card type */
+    /**Card's type */
     String type;
     
     /**
@@ -21,39 +21,39 @@ public abstract class Card implements InterfaceCard {
     // <editor-fold defaultstate="collapsed" desc="Getters & Setters">
     
     /**
-     * Set the card name
-     * @param name The card name
+     * Set card's name
+     * @param name Card's name
      */
     public void setName(String name){
         this.name=name;
     }
     
     /**
-     * Gets the card name
-     * @return The card name
+     * Gets card's name
+     * @return Card's name
      */
     public String getName(){
         return name;
     }
     
     /**
-     * Set the card description
-     * @param description The card description
+     * Set card's description
+     * @param description Card's description
      */
     public void setDescription(String description){
         this.description=description;
     }
     
     /**
-     * Gets the card description
-     * @return The card description
+     * Gets card's description
+     * @return Card's description
      */
     public String getDescription(){
         return description;
     }
     /**
-     * Gets the card type
-     * @return The card type
+     * Gets card's type
+     * @return Card's type
      */
     public String getType(){
         return type;
@@ -64,6 +64,4 @@ public abstract class Card implements InterfaceCard {
      * The <i>specific</i> effect of the card. 
      * Each card that extends this class must provide its own implementation.
      */
-    
-    //public abstract void execute();
 }

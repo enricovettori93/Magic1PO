@@ -1,15 +1,15 @@
 package Magic.Cards;
 
 /**
- * Rappresents an Instant (ISTANTANEO)
+ * Represents an Instant (ISTANTANEO)
  * @author Enrico
  */
 public class Instant extends Card{
     
     /**
      * Creates a new Instant (ISTANTANEO)
-     * @param name The Instant name
-     * @param description The Instant description
+     * @param name Instant's name
+     * @param description Instant's description
      */
     public Instant(String name, String description){
         this.name=name;

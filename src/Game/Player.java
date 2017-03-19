@@ -10,76 +10,71 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
-import java.util.Stack;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.Random;
 
 /**
- * Rappresnets a player
+ * Represnets a player
  *
  * @author Enrico
  */
 public class Player {
 
     /**
-     * The player name
+     * Player's name
      */
     private String name;
 
     /**
-     * The initsal life points
+     * Starting life points
      */
     private int lifePoints = 10;
 
     /**
-     * The deck
+     * Deck
      */
     private List<Card> mazzo = new ArrayList<>();
 
     /**
-     * The hand
+     * Hand
      */
     protected List<Card> mano = new ArrayList<>();
 
     /**
-     * The round handler
+     * Round's handler
      */
-    private Round t;
+    private Round round;
 
     /**
-     * Indicates if the player is currenlty in game or not
+     * It indicates if the player is currenlty in game or not
      */
     private Boolean ingioco = true;
 
     /**
-     * The playground
+     * Playground
      */
     private Playground playground;
 
     /**
-     * The player magics
+     * Player's magics
      */
     private List<Card> magics = new ArrayList<>();
 
     /**
-     * The player monsters
+     * Player's monsters
      */
     private List<Creature> monsters = new ArrayList<>();
     
     /**
-     * The input stream
+     * Input stream
      */
     private InputStreamReader reader;
     
     /**
-     * The buffer reader
+     * Buffer's reader
      */
     private BufferedReader myInput;
     
     /**
-     * variable that check if program launch an exception
+     * Variable that checks if program launches an exception
      */
     private boolean throwedexc = false;
     
@@ -115,8 +110,8 @@ public class Player {
         return ingioco;
     }
 
-    public void setInGioco(Boolean boneggio) {
-        ingioco = boneggio;
+    public void setInGioco(Boolean ingioco) {
+        this.ingioco = ingioco;
     }
 
     public List<Card> getMagics() {
@@ -131,9 +126,10 @@ public class Player {
         this.magics.addAll(magics);
     }
 
-    /*Lista de creature non più di carte!*/
+    /*List of creatures and not of cards!*/
     public List<Creature> getMonsters() {
         return monsters;
+        
     }
 
     public void addMonster(Creature monster) {
@@ -156,7 +152,6 @@ public class Player {
         int carta=0;
         System.out.println(this.getNome() + " seleziona la carta " + (i+1) + " da inserire nel mazzo (presente solo omeophaty)");
         System.out.println("1 - Omeophaty");
-        System.out.println("2 - Gemin (mostro)");
         do{
             do{
                 throwedexc=false;
@@ -172,14 +167,10 @@ public class Player {
                 } catch (IOException ex) {
                     System.out.println("Errore " + ex);
                 }
-            }while((carta != 1 && carta != 2) || throwedexc == true);
+            }while(carta != 1 || throwedexc == true);
             i++;
-            if(carta==1){
-                mazzo.add(new Instant("Omeophaty","Omeophaty does nothing"));
-            }else{
-                mazzo.add(new Creature("Gemin","Vortice di gioia",-5,-10));
-            }
-        }while(i<10);
+            mazzo.add(new Instant("Omeophaty","Omeophaty does nothing"));
+        }while(i<20);
         Collections.shuffle(mazzo);
     }
 
@@ -199,8 +190,8 @@ public class Player {
     }
 
     /**
-     * Gets the number of cards the player has in his deck
-     * @return The number of card left in the deck
+     * The method carteMazzo() gets the number of cards that the player has in his deck
+     * @return The number of cards left in the deck
      */
     public int carteMazzo() {
         return mazzo.size();
@@ -222,9 +213,8 @@ public class Player {
     }
     
     /**
-     *Check if the player can and would use istant's card, otherwise don't do nothing
-     * Return true if the player use an istans, false if don't want to play some istants
-     * @return 
+     *This method checks if the player can and would use istant card, otherwise the method does nothing
+     * @return true if the player use an istant card, otherwise it return false. 
      */
     public boolean checkIstantToPlay(){
         boolean iveIstant = false;
@@ -298,13 +288,14 @@ public class Player {
         monsters.get(index).setTapped(true);
     }
     /**
-     * Initalize a new round
+     * Initialize a new round
      */
-    public void initTurno() {
-        t = new Round(playground, this);
+    public void initRound() {
+        round = new Round(playground, this);
     }
-    
-    //PULISCO DAL CAMPO LE MAGIE GIOCATE CHE NON SIANO INCANTESIMI
+    /**
+     * I clean playground from Sorcery that have been played and are not enchantment
+     */
     public void cleanMagicsOnGround(){
         for(int i=0; i<magics.size();i++)
             if(magics.get(i).getType().equals("Sorcery"))
@@ -338,6 +329,9 @@ public class Player {
         System.out.println("\n");
     }
     
+    /*
+    Reset all monster's handler
+    */
     public void resetMonsterHandler(){
         for(int i=0;i<monsters.size();i++){
             monsters.get(i).resetHandler();

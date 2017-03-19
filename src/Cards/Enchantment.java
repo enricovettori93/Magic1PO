@@ -1,15 +1,15 @@
 package Magic.Cards;
 
 /**
- * Rappresents an Enchantment (INCANTAMENTO)
+ * Represents an Enchantment (INCANTAMENTO)
  * @author Enrico
  */
 public class Enchantment extends Card {
     
     /**
      * Creates a new Enchantment (INCANTAMENTO)
-     * @param name The Enchantment name
-     * @param description The Enchantment description
+     * @param name Enchantment's name
+     * @param description Enchantment's description
      */
     public Enchantment(String name, String description){
         this.name=name;

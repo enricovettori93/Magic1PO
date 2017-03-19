@@ -7,7 +7,7 @@ package Magic.Cards;
 public class Creature extends Card {
     
     /**
-     * Indicates if the Creature is tapped or not
+     * This class indicates if the Creature is tapped or not
      */
     private boolean tapped;
     private int attack;
@@ -16,8 +16,8 @@ public class Creature extends Card {
     
     /**
      * Create a new Creature (CREATURA)
-     * @param name The Creature name
-     * @param description The Creature description
+     * @param name Creature's name
+     * @param description Creature's description
      * @param attack Creature's attack points
      * @param defence Creature's defence points
      */
@@ -55,6 +55,9 @@ public class Creature extends Card {
         return handlerAD.getDefence();
     }
     
+    /*
+    Method's for modify & reset the creature's handler
+    */
     public void resetHandler(){
         handlerAD.resetHandler(this.attack, this.defence);
     }

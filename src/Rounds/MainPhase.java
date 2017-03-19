@@ -14,32 +14,32 @@ import java.io.InputStreamReader;
 public class MainPhase implements Phase {
 
     /**
-     * The playground
+     * Playground
      */
     private Playground playground;
 
     /**
-     * The player
+     * Player
      */
     private Player player;
 
     /**
-     * The input stream
+     * Input stream
      */
     private InputStreamReader reader;
 
     /**
-     * The buffer
+     * Buffer
      */
     private BufferedReader myInput;
     
     /**
-     * variable that check if program launch an exception
+     * Variable that checks if program launches an exception
      */
     private boolean throwedexc = false;
     
     /**
-     * Creats a new Main pahse
+     * Creates a new Main pahse
      *
      * @param playground The playground
      * @param player The player
