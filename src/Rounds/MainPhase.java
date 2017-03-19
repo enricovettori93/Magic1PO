@@ -59,6 +59,7 @@ public class MainPhase implements Phase {
         System.out.println("");
         int input = 0;
         do {
+            throwedexc=false;
             try {
                 throwedexc=false;
                 System.out.print("\n-> ");
