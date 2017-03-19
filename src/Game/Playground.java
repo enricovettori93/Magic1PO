@@ -28,9 +28,9 @@ public class Playground {
      * Initialize a new playground
      */
     public Playground() {
-        effetti = new Stack();
-        cartaGiocataDa = new Stack();
-        playedCardStack = new ArrayList();
+        effetti = new Stack <>();
+        cartaGiocataDa = new Stack <>();
+        playedCardStack = new ArrayList <>();
         this.player1 = new Player(this);
         this.player2 = new Player(this);
         inizializza();
@@ -59,7 +59,8 @@ public class Playground {
     private void inizializza() {
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader myInput = new BufferedReader(reader);
-        //I create players
+        System.out.println("Primo assignment P.O. 2016/2017.\nStudenti: Enrico Vettori, Alessia Marostica, Giacomo De Liberali, Elena Rossetto.\n\n");
+        //Player's creation
         System.out.print("Giocatore 1, inserisci il tuo nome: ");
         do {
             try {
